@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 //  Authentication
 Route::get('login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 //  Admin
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('auth');
