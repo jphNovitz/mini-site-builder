@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('admin.layouts.base')
 @section('content')
     <form method="POST" action="{{route('admin.cards.update', $businessCard)}}" enctype="multipart/form-data">
         @csrf
