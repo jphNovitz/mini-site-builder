@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BusinessCard;
 
 use App\Enums\SocialMedia;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessCardStoreRequest;
 use App\Models\BusinessCard;
 
@@ -28,4 +29,5 @@ class BusinessCardController extends Controller
 
         return view('business-card.confirmation')->with('success', 'merci, en attente de validation');
     }
+
 }
