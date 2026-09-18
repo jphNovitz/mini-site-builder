@@ -1,5 +1,10 @@
 @extends('admin.layouts.base')
 @section('content')
+    <div class="grid grid-cols-3">
+        <div><a href="{{route('admin.cards.index')}}">Tout afficher</a></div>
+        <div><a href="{{route('admin.cards.index',['status' => 'pending'])}}">En attente</a></div>
+        <div><a href="{{route('admin.cards.index',['status' => 'published'])}}">publiées</a></div>
+    </div>
     <table class="table-auto">
         <thead>
         <tr>

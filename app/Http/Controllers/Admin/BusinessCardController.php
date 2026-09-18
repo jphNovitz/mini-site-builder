@@ -10,10 +10,11 @@ use Illuminate\Http\Request;
 
 class BusinessCardController extends Controller
 {
-    public function index(){
-
-        $businessCards = BusinessCard::all();
-
+    public function index(Request $request){
+        $businessCards = BusinessCard::when(
+            $request->query('status'),
+            fn ($query, $status) => $query->where('status', $status)
+        )->get();
         return view('admin.business-card.index', compact('businessCards'));
 
     }
