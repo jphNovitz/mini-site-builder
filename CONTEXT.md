@@ -5,7 +5,7 @@ Génère, à partir d'un formulaire, une **carte de visite** numérique pour une
 ## Language
 
 **Carte de visite**:
-Le site statique généré pour une entreprise : une page unique affichant ses informations, avec deux fonctionnalités seulement — afficher un QR code et partager une vCard. Accessible à `votredomaine.com/slug-entreprise`. À la création, elle est **en attente** ; vous l'**approuvez** depuis l'espace admin pour la **publier**.
+Le site statique généré pour une entreprise : une page unique affichant ses informations, avec deux fonctionnalités seulement — afficher un QR code et partager une vCard. Accessible à `votredomaine.com/cartes/slug-entreprise`. À la création, elle est **en attente** ; vous l'**approuvez** depuis l'espace admin pour la **publier**.
 _Avoid_: Business card, mini site, page (trop vague)
 
 **Site statique**:
