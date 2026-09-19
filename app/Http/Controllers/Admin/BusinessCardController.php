@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Contracts\PublishSiteContract;
 use App\Enums\SocialMedia;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessCardStoreRequest;
@@ -45,8 +46,9 @@ class BusinessCardController extends Controller
 
     }
 
-    public function approve(BusinessCard $businessCard, Request $request)
+    public function approve(BusinessCard $businessCard, PublishSiteContract $publishSite, Request $request)
     {
+        $publishSite->create($businessCard);
         $businessCard->status = 'published';
         $businessCard->save();
 
