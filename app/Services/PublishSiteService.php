@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Actions\CopyLogoAction;
 use App\Actions\CreateHtmlAction;
+use App\Actions\CreateQrCodeAction;
 use App\Actions\CreateVcardAction;
 use App\Actions\PrepareFolderAction;
 use App\Contracts\PublishSiteContract;
@@ -14,7 +15,8 @@ class PublishSiteService implements PublishSiteContract
     public function __construct(private readonly PrepareFolderAction $prepareFolderAction,
                                 private readonly CopyLogoAction      $copyLogoAction,
                                 private readonly CreateVcardAction   $createVcardAction,
-                                private readonly CreateHtmlAction     $createHtmlAction)
+                                private readonly CreateHtmlAction     $createHtmlAction,
+                                private readonly CreateQrCodeAction     $createQrCodeAction)
     {}
 
     public function create(BusinessCard $businessCard)
@@ -26,7 +28,10 @@ class PublishSiteService implements PublishSiteContract
         if ($businessCard->logo_path) {
             $logo = $this->copyLogoAction->execute($businessCard->logo_path, $directory);
         }
-        $this->createVcardAction->execute($businessCard, $directory);
-        $this->createHtmlAction->execute($businessCard, $logo, $directory);
+        $content = $this->createVcardAction->execute($businessCard, $directory);
+        $qrCode = $this->createQrCodeAction->execute($content);
+
+
+        $this->createHtmlAction->execute($businessCard, $logo, $qrCode, $directory);
     }
 }

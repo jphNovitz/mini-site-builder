@@ -100,6 +100,8 @@
             font-weight: 600;
             text-decoration: none;
         }
+        summary.btn { cursor: pointer; list-style: none; }
+        .qr svg { display: block; width: 100%; max-width: 20rem; height: auto; margin: 1rem auto; }
 
         .legal {
             margin-top: 1.5rem;
@@ -148,6 +150,16 @@
                 @endforeach
             </div>
         @endif
+
+            @if ($qrCode)
+                <details class="qr">
+                    <summary class="btn">Afficher le QR code</summary>
+                    <div role="img" aria-label="QR code pour ajouter {{ $businessCard->company_name }} à vos contacts">
+                        {!! $qrCode !!}
+                    </div>
+                </details>
+            @endif
+
 
         <a class="btn" href="contact.vcf" download>Ajouter à mes contacts</a>
 

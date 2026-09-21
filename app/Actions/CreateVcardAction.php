@@ -12,6 +12,8 @@ class CreateVcardAction
     {
         $content = $this->buildVCardContent($businessCard);
         File::put($directory.'/contact.vcf', $content);
+
+        return $content;
     }
 
     private function buildVCardContent(BusinessCard $businessCard): string
