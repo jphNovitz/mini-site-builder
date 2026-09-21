@@ -74,8 +74,7 @@
             </div>
             <div class="flex flex-col gap-4 my-2">
                 <label for="accent_color" class="w-full">Couleur</label>
-                <input type="text" id="accent_color" name="accent_color" value="{{old('accent_color')}}"
-                       placeholder="couleur"
+                <input type="color" id="accent_color" name="accent_color" value="{{ old('accent_color', \App\Models\BusinessCard::DEFAULT_ACCENT) }}"
                        class="w-full p-2 border border-gray-200">
                 @error('accent_color')
                 <span class="text-red-600 font-semibold"> {{$message}}</span>

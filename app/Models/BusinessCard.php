@@ -12,6 +12,7 @@ class BusinessCard extends Model
     /** @use HasFactory<\Database\Factories\BusinessCardFactory> */
     use HasFactory;
 
+    public const DEFAULT_ACCENT = '#2563eb';
     protected $fillable = [
         'company_name','logo_path','tagline','vat_number','company_number',
         'address','phone_number','email','website','social_media_links',

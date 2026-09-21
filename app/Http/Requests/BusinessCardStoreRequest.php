@@ -34,7 +34,7 @@ class BusinessCardStoreRequest extends FormRequest
             'website'      => 'required_without_all:phone_number,email|nullable|url|max:255',
             'social_media_links' => 'nullable|array',
             'social_media_links.*' => 'nullable|url|max:255',
-            'accent_color' => 'nullable|string|max:7',
+            'accent_color' => 'nullable|string|max:7|regex:/^#[0-9a-fA-F]{6}$/',
         ];
     }
 

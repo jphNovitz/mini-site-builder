@@ -1,5 +1,5 @@
 @php
-    $accent = preg_match('/^#[0-9a-fA-F]{6}$/', $businessCard->accent_color ?? '') ? $businessCard->accent_color : '#2563eb';
+    $accent = preg_match('/^#[0-9a-fA-F]{6}$/', $businessCard->accent_color ?? '') ? $businessCard->accent_color : \App\Models\BusinessCard::DEFAULT_ACCENT;
     [$r, $g, $b] = sscanf($accent, '#%02x%02x%02x');
     $onAccent = (0.299 * $r + 0.587 * $g + 0.114 * $b) > 160 ? '#111827' : '#ffffff';
     $socials = array_filter($businessCard->social_media_links ?? []);
