@@ -18,8 +18,10 @@ class CreateQrCodeAction
             new SvgImageBackEnd()
         );
         $writer = new Writer($renderer);
-        $qrCode = $writer->writeString($vcard, 'utf-8', ErrorCorrectionLevel::M());
-        return $qrCode;
+        $qrCode = $writer->writeString($vcard, 'UTF-8', ErrorCorrectionLevel::M());
+
+        return preg_replace('/^<\?xml[^>]*\?>\s*/', '', $qrCode);
+
     }
 
 }
