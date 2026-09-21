@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Contracts\PublishSiteContract;
+use App\Enums\CardStatus;
 use App\Enums\SocialMedia;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessCardStoreRequest;
@@ -32,7 +33,7 @@ class BusinessCardController extends Controller
             'socialNetworks' => SocialMedia::cases(),
         ]);
     }
-    public function update(BusinessCard $businessCard, BusinessCardStoreRequest $request)
+    public function update(BusinessCard $businessCard, PublishSiteContract $publishSite, BusinessCardStoreRequest $request)
     {
         $data = $request->validated();
 
@@ -42,6 +43,9 @@ class BusinessCardController extends Controller
         }
 
         $businessCard->update($data);
+        if ($businessCard->status === CardStatus::Published) {
+            $publishSite->create($businessCard);
+        }
         return redirect()->route('admin.cards.show', $businessCard)->with('success', 'Carte mise à jour avec succès.');
 
     }
