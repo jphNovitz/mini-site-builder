@@ -18,206 +18,777 @@
         @endif
     </head>
     <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
-            @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
-                    @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                        >
-                            Dashboard
-                        </a>
-                    @else
-                        <a
-                            href="{{ route('login') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-                        >
-                            Log in
-                        </a>
+    Variante 1 — Vos clients vous contactent plus facilement
 
-                        @if (Route::has('register'))
-                            <a
-                                href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                                Register
-                            </a>
-                        @endif
-                    @endauth
-                </nav>
-            @endif
-        </header>
-        <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
-            <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                <div class="text-[13px] leading-[20px] flex-1 p-6 pb-6 lg:p-20 lg:pb-10 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
-                    <h1 class="mb-1 font-medium">Let's get started</h1>
-                    <p class="mb-2 text-[#706f6c] dark:text-[#A1A09A]">With so many options available to you,<br /> we suggest you start with the following:</p>
-                    <ul class="flex flex-col mb-4 lg:mb-6">
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:top-1/2 before:bottom-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>
-                                Read the
-                                <a href="https://laravel.com/docs" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
-                                    <span>Documentation</span>
-                                    <svg
-                                        width="10"
-                                        height="11"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="w-2.5 h-2.5"
-                                    >
-                                        <path
-                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                            stroke="currentColor"
-                                            stroke-linecap="square"
-                                        />
-                                    </svg>
-                                </a>
-                            </span>
-                        </li>
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>
-                                Watch video tutorials at
-                                <a href="https://laracasts.com" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
-                                    <span>Laracasts</span>
-                                    <svg
-                                        width="10"
-                                        height="11"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="w-2.5 h-2.5"
-                                    >
-                                        <path
-                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                            stroke="currentColor"
-                                            stroke-linecap="square"
-                                        />
-                                    </svg>
-                                </a>
-                            </span>
-                        </li>
-                    </ul>
-                    <ul class="flex gap-3 text-sm leading-normal">
-                        <li>
-                            <a href="https://cloud.laravel.com" target="_blank" class="inline-block dark:bg-[#eeeeec] dark:border-[#eeeeec] dark:text-[#1C1C1A] dark:hover:bg-white dark:hover:border-white hover:bg-black hover:border-black px-5 py-1.5 bg-[#1b1b18] rounded-sm border border-black text-white text-sm leading-normal">
-                                Deploy now
-                            </a>
-                        </li>
-                    </ul>
+    Le bénéfice est immédiat et l’aperçu rend concret ce que le visiteur recevra avant de remplir le formulaire.
 
-                    <p class="mt-6 lg:mt-10 text-[#706f6c] dark:text-[#A1A09A]">
-                        v{{ app()->version() }}
-                        <a href="https://github.com/laravel/framework/blob/13.x/CHANGELOG.md" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
-                            <span>View changelog</span>
-                            <svg
-                                width="10"
-                                height="11"
-                                viewBox="0 0 10 11"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="w-2.5 h-2.5"
-                            >
-                                <path
-                                    d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                    stroke="currentColor"
-                                    stroke-linecap="square"
-                                />
-                            </svg>
-                        </a>
-                    </p>
-                </div>
-                <div class="bg-[#fff2f2] dark:bg-[#1D0002] relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg aspect-[335/364] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden">
-                    {{-- Laravel Logo --}}
-                    <svg class="w-full text-[#F53003] dark:text-[#F61500] transition-all translate-y-0 opacity-100 max-w-none duration-750 starting:opacity-0 motion-safe:starting:translate-y-6" viewBox="0 0 438 104" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.2036 -3H0V102.197H49.5189V86.7187H17.2036V-3Z" fill="currentColor" />
-                        <path d="M110.256 41.6337C108.061 38.1275 104.945 35.3731 100.905 33.3681C96.8667 31.3647 92.8016 30.3618 88.7131 30.3618C83.4247 30.3618 78.5885 31.3389 74.201 33.2923C69.8111 35.2456 66.0474 37.928 62.9059 41.3333C59.7643 44.7401 57.3198 48.6726 55.5754 53.1293C53.8287 57.589 52.9572 62.274 52.9572 67.1813C52.9572 72.1925 53.8287 76.8995 55.5754 81.3069C57.3191 85.7173 59.7636 89.6241 62.9059 93.0293C66.0474 96.4361 69.8119 99.1155 74.201 101.069C78.5885 103.022 83.4247 103.999 88.7131 103.999C92.8016 103.999 96.8667 102.997 100.905 100.994C104.945 98.9911 108.061 96.2359 110.256 92.7282V102.195H126.563V32.1642H110.256V41.6337ZM108.76 75.7472C107.762 78.4531 106.366 80.8078 104.572 82.8112C102.776 84.8161 100.606 86.4183 98.0637 87.6206C95.5202 88.823 92.7004 89.4238 89.6103 89.4238C86.5178 89.4238 83.7252 88.823 81.2324 87.6206C78.7388 86.4183 76.5949 84.8161 74.7998 82.8112C73.004 80.8078 71.6319 78.4531 70.6856 75.7472C69.7356 73.0421 69.2644 70.1868 69.2644 67.1821C69.2644 64.1758 69.7356 61.3205 70.6856 58.6154C71.6319 55.9102 73.004 53.5571 74.7998 51.5522C76.5949 49.5495 78.738 47.9451 81.2324 46.7427C83.7252 45.5404 86.5178 44.9396 89.6103 44.9396C92.7012 44.9396 95.5202 45.5404 98.0637 46.7427C100.606 47.9451 102.776 49.5487 104.572 51.5522C106.367 53.5571 107.762 55.9102 108.76 58.6154C109.756 61.3205 110.256 64.1758 110.256 67.1821C110.256 70.1868 109.756 73.0421 108.76 75.7472Z" fill="currentColor" />
-                        <path d="M242.805 41.6337C240.611 38.1275 237.494 35.3731 233.455 33.3681C229.416 31.3647 225.351 30.3618 221.262 30.3618C215.974 30.3618 211.138 31.3389 206.75 33.2923C202.36 35.2456 198.597 37.928 195.455 41.3333C192.314 44.7401 189.869 48.6726 188.125 53.1293C186.378 57.589 185.507 62.274 185.507 67.1813C185.507 72.1925 186.378 76.8995 188.125 81.3069C189.868 85.7173 192.313 89.6241 195.455 93.0293C198.597 96.4361 202.361 99.1155 206.75 101.069C211.138 103.022 215.974 103.999 221.262 103.999C225.351 103.999 229.416 102.997 233.455 100.994C237.494 98.9911 240.611 96.2359 242.805 92.7282V102.195H259.112V32.1642H242.805V41.6337ZM241.31 75.7472C240.312 78.4531 238.916 80.8078 237.122 82.8112C235.326 84.8161 233.156 86.4183 230.614 87.6206C228.07 88.823 225.251 89.4238 222.16 89.4238C219.068 89.4238 216.275 88.823 213.782 87.6206C211.289 86.4183 209.145 84.8161 207.35 82.8112C205.554 80.8078 204.182 78.4531 203.236 75.7472C202.286 73.0421 201.814 70.1868 201.814 67.1821C201.814 64.1758 202.286 61.3205 203.236 58.6154C204.182 55.9102 205.554 53.5571 207.35 51.5522C209.145 49.5495 211.288 47.9451 213.782 46.7427C216.275 45.5404 219.068 44.9396 222.16 44.9396C225.251 44.9396 228.07 45.5404 230.614 46.7427C233.156 47.9451 235.326 49.5487 237.122 51.5522C238.917 53.5571 240.312 55.9102 241.31 58.6154C242.306 61.3205 242.806 64.1758 242.806 67.1821C242.805 70.1868 242.305 73.0421 241.31 75.7472Z" fill="currentColor" />
-                        <path d="M438 -3H421.694V102.197H438V-3Z" fill="currentColor" />
-                        <path d="M139.43 102.197H155.735V48.2834H183.712V32.1665H139.43V102.197Z" fill="currentColor" />
-                        <path d="M324.49 32.1665L303.995 85.794L283.498 32.1665H266.983L293.748 102.197H314.242L341.006 32.1665H324.49Z" fill="currentColor" />
-                        <path d="M376.571 30.3656C356.603 30.3656 340.797 46.8497 340.797 67.1828C340.797 89.6597 356.094 104 378.661 104C391.29 104 399.354 99.1488 409.206 88.5848L398.189 80.0226C398.183 80.031 389.874 90.9895 377.468 90.9895C363.048 90.9895 356.977 79.3111 356.977 73.269H411.075C413.917 50.1328 398.775 30.3656 376.571 30.3656ZM357.02 61.0967C357.145 59.7487 359.023 43.3761 376.442 43.3761C393.861 43.3761 395.978 59.7464 396.099 61.0967H357.02Z" fill="currentColor" />
-                    </svg>
-
-                    {{-- 13 --}}
-                    <svg class="w-[438px] max-w-none relative -mt-[6.6rem] -ml-8 lg:ml-0 [--stroke-color:#1B1B18] dark:[--stroke-color:#FF750F]" viewBox="0 0 440 392" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g class="mix-blend-darken dark:mix-blend-normal transition-all delay-300 opacity-100 duration-750 starting:opacity-0 text-[#1B1B18] dark:text-black">
-                            <mask id="path-1-mask" maskUnits="userSpaceOnUse" x="-0.328613" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="-0.328613" y="103" width="338" height="299"/>
-                                <path d="M234.936 400.8C204.136 400.8 178.936 392.4 159.336 375.6C140.136 358.8 130.536 337 130.536 310.2H200.736C200.736 318.2 203.736 324.8 209.736 330C215.736 335.2 223.736 337.8 233.736 337.8C243.336 337.8 251.136 335 257.136 329.4C263.536 323.8 266.736 316.6 266.736 307.8C266.736 299.8 263.936 293.2 258.336 288C252.736 282.8 245.536 280.2 236.736 280.2H199.536V218.4H236.736C243.536 218.4 249.336 216 254.136 211.2C258.936 206.4 261.336 200.4 261.336 193.2C261.336 184.8 258.736 178.2 253.536 173.4C248.336 168.6 241.736 166.2 233.736 166.2C226.536 166.2 220.336 168.4 215.136 172.8C210.336 177.2 207.936 182.8 207.936 189.6H141.336C141.336 164.8 150.136 144.6 167.736 129C185.336 113 207.936 105 235.536 105C263.136 105 285.536 112.2 302.736 126.6C320.336 141 329.136 160 329.136 183.6C329.136 200.8 324.536 214.8 315.336 225.6C306.136 236 294.336 243.2 279.936 247.2C297.136 252 310.736 260.2 320.736 271.8C331.136 283.4 336.336 298 336.336 315.6C336.336 340.4 326.936 360.8 308.136 376.8C289.336 392.8 264.936 400.8 234.936 400.8Z"/>
-                                <path d="M26.8714 167.6H1.67139V105.2H94.6714V400.2H26.8714V167.6Z"/>
-                            </mask>
-                            <path d="M234.936 400.8C204.136 400.8 178.936 392.4 159.336 375.6C140.136 358.8 130.536 337 130.536 310.2H200.736C200.736 318.2 203.736 324.8 209.736 330C215.736 335.2 223.736 337.8 233.736 337.8C243.336 337.8 251.136 335 257.136 329.4C263.536 323.8 266.736 316.6 266.736 307.8C266.736 299.8 263.936 293.2 258.336 288C252.736 282.8 245.536 280.2 236.736 280.2H199.536V218.4H236.736C243.536 218.4 249.336 216 254.136 211.2C258.936 206.4 261.336 200.4 261.336 193.2C261.336 184.8 258.736 178.2 253.536 173.4C248.336 168.6 241.736 166.2 233.736 166.2C226.536 166.2 220.336 168.4 215.136 172.8C210.336 177.2 207.936 182.8 207.936 189.6H141.336C141.336 164.8 150.136 144.6 167.736 129C185.336 113 207.936 105 235.536 105C263.136 105 285.536 112.2 302.736 126.6C320.336 141 329.136 160 329.136 183.6C329.136 200.8 324.536 214.8 315.336 225.6C306.136 236 294.336 243.2 279.936 247.2C297.136 252 310.736 260.2 320.736 271.8C331.136 283.4 336.336 298 336.336 315.6C336.336 340.4 326.936 360.8 308.136 376.8C289.336 392.8 264.936 400.8 234.936 400.8Z" fill="currentColor"/>
-                            <path d="M26.8714 167.6H1.67139V105.2H94.6714V400.2H26.8714V167.6Z" fill="currentColor"/>
-                            <path d="M234.936 400.8C204.136 400.8 178.936 392.4 159.336 375.6C140.136 358.8 130.536 337 130.536 310.2H200.736C200.736 318.2 203.736 324.8 209.736 330C215.736 335.2 223.736 337.8 233.736 337.8C243.336 337.8 251.136 335 257.136 329.4C263.536 323.8 266.736 316.6 266.736 307.8C266.736 299.8 263.936 293.2 258.336 288C252.736 282.8 245.536 280.2 236.736 280.2H199.536V218.4H236.736C243.536 218.4 249.336 216 254.136 211.2C258.936 206.4 261.336 200.4 261.336 193.2C261.336 184.8 258.736 178.2 253.536 173.4C248.336 168.6 241.736 166.2 233.736 166.2C226.536 166.2 220.336 168.4 215.136 172.8C210.336 177.2 207.936 182.8 207.936 189.6H141.336C141.336 164.8 150.136 144.6 167.736 129C185.336 113 207.936 105 235.536 105C263.136 105 285.536 112.2 302.736 126.6C320.336 141 329.136 160 329.136 183.6C329.136 200.8 324.536 214.8 315.336 225.6C306.136 236 294.336 243.2 279.936 247.2C297.136 252 310.736 260.2 320.736 271.8C331.136 283.4 336.336 298 336.336 315.6C336.336 340.4 326.936 360.8 308.136 376.8C289.336 392.8 264.936 400.8 234.936 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-1-mask)"/>
-                            <path d="M26.8714 167.6H1.67139V105.2H94.6714V400.2H26.8714V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-1-mask)"/>
-                        </g>
-
-                        <g class="transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[26px] text-[#F3BEC7] dark:text-[#4B0600]">
-                            <mask id="path-2-mask" maskUnits="userSpaceOnUse" x="25.3357" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="25.3357" y="103" width="338" height="299"/>
-                                <path d="M260.6 400.8C229.8 400.8 204.6 392.4 185 375.6C165.8 358.8 156.2 337 156.2 310.2H226.4C226.4 318.2 229.4 324.8 235.4 330C241.4 335.2 249.4 337.8 259.4 337.8C269 337.8 276.8 335 282.8 329.4C289.2 323.8 292.4 316.6 292.4 307.8C292.4 299.8 289.6 293.2 284 288C278.4 282.8 271.2 280.2 262.4 280.2H225.2V218.4H262.4C269.2 218.4 275 216 279.8 211.2C284.6 206.4 287 200.4 287 193.2C287 184.8 284.4 178.2 279.2 173.4C274 168.6 267.4 166.2 259.4 166.2C252.2 166.2 246 168.4 240.8 172.8C236 177.2 233.6 182.8 233.6 189.6H167C167 164.8 175.8 144.6 193.4 129C211 113 233.6 105 261.2 105C288.8 105 311.2 112.2 328.4 126.6C346 141 354.8 160 354.8 183.6C354.8 200.8 350.2 214.8 341 225.6C331.8 236 320 243.2 305.6 247.2C322.8 252 336.4 260.2 346.4 271.8C356.8 283.4 362 298 362 315.6C362 340.4 352.6 360.8 333.8 376.8C315 392.8 290.6 400.8 260.6 400.8Z"/>
-                                <path d="M52.5357 167.6H27.3357V105.2H120.336V400.2H52.5357V167.6Z"/>
-                            </mask>
-                            <path d="M260.6 400.8C229.8 400.8 204.6 392.4 185 375.6C165.8 358.8 156.2 337 156.2 310.2H226.4C226.4 318.2 229.4 324.8 235.4 330C241.4 335.2 249.4 337.8 259.4 337.8C269 337.8 276.8 335 282.8 329.4C289.2 323.8 292.4 316.6 292.4 307.8C292.4 299.8 289.6 293.2 284 288C278.4 282.8 271.2 280.2 262.4 280.2H225.2V218.4H262.4C269.2 218.4 275 216 279.8 211.2C284.6 206.4 287 200.4 287 193.2C287 184.8 284.4 178.2 279.2 173.4C274 168.6 267.4 166.2 259.4 166.2C252.2 166.2 246 168.4 240.8 172.8C236 177.2 233.6 182.8 233.6 189.6H167C167 164.8 175.8 144.6 193.4 129C211 113 233.6 105 261.2 105C288.8 105 311.2 112.2 328.4 126.6C346 141 354.8 160 354.8 183.6C354.8 200.8 350.2 214.8 341 225.6C331.8 236 320 243.2 305.6 247.2C322.8 252 336.4 260.2 346.4 271.8C356.8 283.4 362 298 362 315.6C362 340.4 352.6 360.8 333.8 376.8C315 392.8 290.6 400.8 260.6 400.8Z" fill="currentColor"/>
-                            <path d="M52.5357 167.6H27.3357V105.2H120.336V400.2H52.5357V167.6Z" fill="currentColor"/>
-                            <path d="M260.6 400.8C229.8 400.8 204.6 392.4 185 375.6C165.8 358.8 156.2 337 156.2 310.2H226.4C226.4 318.2 229.4 324.8 235.4 330C241.4 335.2 249.4 337.8 259.4 337.8C269 337.8 276.8 335 282.8 329.4C289.2 323.8 292.4 316.6 292.4 307.8C292.4 299.8 289.6 293.2 284 288C278.4 282.8 271.2 280.2 262.4 280.2H225.2V218.4H262.4C269.2 218.4 275 216 279.8 211.2C284.6 206.4 287 200.4 287 193.2C287 184.8 284.4 178.2 279.2 173.4C274 168.6 267.4 166.2 259.4 166.2C252.2 166.2 246 168.4 240.8 172.8C236 177.2 233.6 182.8 233.6 189.6H167C167 164.8 175.8 144.6 193.4 129C211 113 233.6 105 261.2 105C288.8 105 311.2 112.2 328.4 126.6C346 141 354.8 160 354.8 183.6C354.8 200.8 350.2 214.8 341 225.6C331.8 236 320 243.2 305.6 247.2C322.8 252 336.4 260.2 346.4 271.8C356.8 283.4 362 298 362 315.6C362 340.4 352.6 360.8 333.8 376.8C315 392.8 290.6 400.8 260.6 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-2-mask)"/>
-                            <path d="M52.5357 167.6H27.3357V105.2H120.336V400.2H52.5357V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-2-mask)"/>
-                        </g>
-                        
-                        <g class="mix-blend-color dark:mix-blend-hard-light transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[51px] text-[#F8B803] dark:text-[#391800]">
-                            <mask id="path-3-mask" maskUnits="userSpaceOnUse" x="51" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="51" y="103" width="338" height="299"/>
-                                <path d="M286.264 400.8C255.464 400.8 230.264 392.4 210.664 375.6C191.464 358.8 181.864 337 181.864 310.2H252.064C252.064 318.2 255.064 324.8 261.064 330C267.064 335.2 275.064 337.8 285.064 337.8C294.664 337.8 302.464 335 308.464 329.4C314.864 323.8 318.064 316.6 318.064 307.8C318.064 299.8 315.264 293.2 309.664 288C304.064 282.8 296.864 280.2 288.064 280.2H250.864V218.4H288.064C294.864 218.4 300.664 216 305.464 211.2C310.264 206.4 312.664 200.4 312.664 193.2C312.664 184.8 310.064 178.2 304.864 173.4C299.664 168.6 293.064 166.2 285.064 166.2C277.864 166.2 271.664 168.4 266.464 172.8C261.664 177.2 259.264 182.8 259.264 189.6H192.664C192.664 164.8 201.464 144.6 219.064 129C236.664 113 259.264 105 286.864 105C314.464 105 336.864 112.2 354.064 126.6C371.664 141 380.464 160 380.464 183.6C380.464 200.8 375.864 214.8 366.664 225.6C357.464 236 345.664 243.2 331.264 247.2C348.464 252 362.064 260.2 372.064 271.8C382.464 283.4 387.664 298 387.664 315.6C387.664 340.4 378.264 360.8 359.464 376.8C340.664 392.8 316.264 400.8 286.264 400.8Z"/>
-                                <path d="M78.2 167.6H53V105.2H146V400.2H78.2V167.6Z"/>
-                            </mask>
-                            <path d="M286.264 400.8C255.464 400.8 230.264 392.4 210.664 375.6C191.464 358.8 181.864 337 181.864 310.2H252.064C252.064 318.2 255.064 324.8 261.064 330C267.064 335.2 275.064 337.8 285.064 337.8C294.664 337.8 302.464 335 308.464 329.4C314.864 323.8 318.064 316.6 318.064 307.8C318.064 299.8 315.264 293.2 309.664 288C304.064 282.8 296.864 280.2 288.064 280.2H250.864V218.4H288.064C294.864 218.4 300.664 216 305.464 211.2C310.264 206.4 312.664 200.4 312.664 193.2C312.664 184.8 310.064 178.2 304.864 173.4C299.664 168.6 293.064 166.2 285.064 166.2C277.864 166.2 271.664 168.4 266.464 172.8C261.664 177.2 259.264 182.8 259.264 189.6H192.664C192.664 164.8 201.464 144.6 219.064 129C236.664 113 259.264 105 286.864 105C314.464 105 336.864 112.2 354.064 126.6C371.664 141 380.464 160 380.464 183.6C380.464 200.8 375.864 214.8 366.664 225.6C357.464 236 345.664 243.2 331.264 247.2C348.464 252 362.064 260.2 372.064 271.8C382.464 283.4 387.664 298 387.664 315.6C387.664 340.4 378.264 360.8 359.464 376.8C340.664 392.8 316.264 400.8 286.264 400.8Z" fill="currentColor"/>
-                            <path d="M78.2 167.6H53V105.2H146V400.2H78.2V167.6Z" fill="currentColor"/>
-                            <path d="M286.264 400.8C255.464 400.8 230.264 392.4 210.664 375.6C191.464 358.8 181.864 337 181.864 310.2H252.064C252.064 318.2 255.064 324.8 261.064 330C267.064 335.2 275.064 337.8 285.064 337.8C294.664 337.8 302.464 335 308.464 329.4C314.864 323.8 318.064 316.6 318.064 307.8C318.064 299.8 315.264 293.2 309.664 288C304.064 282.8 296.864 280.2 288.064 280.2H250.864V218.4H288.064C294.864 218.4 300.664 216 305.464 211.2C310.264 206.4 312.664 200.4 312.664 193.2C312.664 184.8 310.064 178.2 304.864 173.4C299.664 168.6 293.064 166.2 285.064 166.2C277.864 166.2 271.664 168.4 266.464 172.8C261.664 177.2 259.264 182.8 259.264 189.6H192.664C192.664 164.8 201.464 144.6 219.064 129C236.664 113 259.264 105 286.864 105C314.464 105 336.864 112.2 354.064 126.6C371.664 141 380.464 160 380.464 183.6C380.464 200.8 375.864 214.8 366.664 225.6C357.464 236 345.664 243.2 331.264 247.2C348.464 252 362.064 260.2 372.064 271.8C382.464 283.4 387.664 298 387.664 315.6C387.664 340.4 378.264 360.8 359.464 376.8C340.664 392.8 316.264 400.8 286.264 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-3-mask)"/>
-                            <path d="M78.2 167.6H53V105.2H146V400.2H78.2V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-3-mask)"/>
-                        </g>
-                        
-                        <g class="mix-blend-multiply dark:mix-blend-normal transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[78px] text-[#F3BEC7] dark:text-[#733000]">
-                            <mask id="path-4-mask" maskUnits="userSpaceOnUse" x="76.6643" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="76.6643" y="103" width="338" height="299"/>
-                                <path d="M311.929 400.8C281.129 400.8 255.929 392.4 236.329 375.6C217.129 358.8 207.529 337 207.529 310.2H277.729C277.729 318.2 280.729 324.8 286.729 330C292.729 335.2 300.729 337.8 310.729 337.8C320.329 337.8 328.129 335 334.129 329.4C340.529 323.8 343.729 316.6 343.729 307.8C343.729 299.8 340.929 293.2 335.329 288C329.729 282.8 322.529 280.2 313.729 280.2H276.529V218.4H313.729C320.529 218.4 326.329 216 331.129 211.2C335.929 206.4 338.329 200.4 338.329 193.2C338.329 184.8 335.729 178.2 330.529 173.4C325.329 168.6 318.729 166.2 310.729 166.2C303.529 166.2 297.329 168.4 292.129 172.8C287.329 177.2 284.929 182.8 284.929 189.6H218.329C218.329 164.8 227.129 144.6 244.729 129C262.329 113 284.929 105 312.529 105C340.129 105 362.529 112.2 379.729 126.6C397.329 141 406.129 160 406.129 183.6C406.129 200.8 401.529 214.8 392.329 225.6C383.129 236 371.329 243.2 356.929 247.2C374.129 252 387.729 260.2 397.729 271.8C408.129 283.4 413.329 298 413.329 315.6C413.329 340.4 403.929 360.8 385.129 376.8C366.329 392.8 341.929 400.8 311.929 400.8Z"/>
-                                <path d="M103.864 167.6H78.6643V105.2H171.664V400.2H103.864V167.6Z"/>
-                            </mask>
-                            <path d="M311.929 400.8C281.129 400.8 255.929 392.4 236.329 375.6C217.129 358.8 207.529 337 207.529 310.2H277.729C277.729 318.2 280.729 324.8 286.729 330C292.729 335.2 300.729 337.8 310.729 337.8C320.329 337.8 328.129 335 334.129 329.4C340.529 323.8 343.729 316.6 343.729 307.8C343.729 299.8 340.929 293.2 335.329 288C329.729 282.8 322.529 280.2 313.729 280.2H276.529V218.4H313.729C320.529 218.4 326.329 216 331.129 211.2C335.929 206.4 338.329 200.4 338.329 193.2C338.329 184.8 335.729 178.2 330.529 173.4C325.329 168.6 318.729 166.2 310.729 166.2C303.529 166.2 297.329 168.4 292.129 172.8C287.329 177.2 284.929 182.8 284.929 189.6H218.329C218.329 164.8 227.129 144.6 244.729 129C262.329 113 284.929 105 312.529 105C340.129 105 362.529 112.2 379.729 126.6C397.329 141 406.129 160 406.129 183.6C406.129 200.8 401.529 214.8 392.329 225.6C383.129 236 371.329 243.2 356.929 247.2C374.129 252 387.729 260.2 397.729 271.8C408.129 283.4 413.329 298 413.329 315.6C413.329 340.4 403.929 360.8 385.129 376.8C366.329 392.8 341.929 400.8 311.929 400.8Z" fill="currentColor"/>
-                            <path d="M103.864 167.6H78.6643V105.2H171.664V400.2H103.864V167.6Z" fill="currentColor"/>
-                            <path d="M311.929 400.8C281.129 400.8 255.929 392.4 236.329 375.6C217.129 358.8 207.529 337 207.529 310.2H277.729C277.729 318.2 280.729 324.8 286.729 330C292.729 335.2 300.729 337.8 310.729 337.8C320.329 337.8 328.129 335 334.129 329.4C340.529 323.8 343.729 316.6 343.729 307.8C343.729 299.8 340.929 293.2 335.329 288C329.729 282.8 322.529 280.2 313.729 280.2H276.529V218.4H313.729C320.529 218.4 326.329 216 331.129 211.2C335.929 206.4 338.329 200.4 338.329 193.2C338.329 184.8 335.729 178.2 330.529 173.4C325.329 168.6 318.729 166.2 310.729 166.2C303.529 166.2 297.329 168.4 292.129 172.8C287.329 177.2 284.929 182.8 284.929 189.6H218.329C218.329 164.8 227.129 144.6 244.729 129C262.329 113 284.929 105 312.529 105C340.129 105 362.529 112.2 379.729 126.6C397.329 141 406.129 160 406.129 183.6C406.129 200.8 401.529 214.8 392.329 225.6C383.129 236 371.329 243.2 356.929 247.2C374.129 252 387.729 260.2 397.729 271.8C408.129 283.4 413.329 298 413.329 315.6C413.329 340.4 403.929 360.8 385.129 376.8C366.329 392.8 341.929 400.8 311.929 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-4-mask)"/>
-                            <path d="M103.864 167.6H78.6643V105.2H171.664V400.2H103.864V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-4-mask)"/>
-                        </g>
-                        
-                        <g class="mix-blend-hard-light transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[102px] text-[#F3BEC7] dark:text-[#4B0600]">
-                            <mask id="path-5-mask" maskUnits="userSpaceOnUse" x="102.329" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="102.329" y="103" width="338" height="299"/>
-                                <path d="M337.593 400.8C306.793 400.8 281.593 392.4 261.993 375.6C242.793 358.8 233.193 337 233.193 310.2H303.393C303.393 318.2 306.393 324.8 312.393 330C318.393 335.2 326.393 337.8 336.393 337.8C345.993 337.8 353.793 335 359.793 329.4C366.193 323.8 369.393 316.6 369.393 307.8C369.393 299.8 366.593 293.2 360.993 288C355.393 282.8 348.193 280.2 339.393 280.2H302.193V218.4H339.393C346.193 218.4 351.993 216 356.793 211.2C361.593 206.4 363.993 200.4 363.993 193.2C363.993 184.8 361.393 178.2 356.193 173.4C350.993 168.6 344.393 166.2 336.393 166.2C329.193 166.2 322.993 168.4 317.793 172.8C312.993 177.2 310.593 182.8 310.593 189.6H243.993C243.993 164.8 252.793 144.6 270.393 129C287.993 113 310.593 105 338.193 105C365.793 105 388.193 112.2 405.393 126.6C422.993 141 431.793 160 431.793 183.6C431.793 200.8 427.193 214.8 417.993 225.6C408.793 236 396.993 243.2 382.593 247.2C399.793 252 413.393 260.2 423.393 271.8C433.793 283.4 438.993 298 438.993 315.6C438.993 340.4 429.593 360.8 410.793 376.8C391.993 392.8 367.593 400.8 337.593 400.8Z"/>
-                                <path d="M129.529 167.6H104.329V105.2H197.329V400.2H129.529V167.6Z"/>
-                            </mask>
-                            <path d="M337.593 400.8C306.793 400.8 281.593 392.4 261.993 375.6C242.793 358.8 233.193 337 233.193 310.2H303.393C303.393 318.2 306.393 324.8 312.393 330C318.393 335.2 326.393 337.8 336.393 337.8C345.993 337.8 353.793 335 359.793 329.4C366.193 323.8 369.393 316.6 369.393 307.8C369.393 299.8 366.593 293.2 360.993 288C355.393 282.8 348.193 280.2 339.393 280.2H302.193V218.4H339.393C346.193 218.4 351.993 216 356.793 211.2C361.593 206.4 363.993 200.4 363.993 193.2C363.993 184.8 361.393 178.2 356.193 173.4C350.993 168.6 344.393 166.2 336.393 166.2C329.193 166.2 322.993 168.4 317.793 172.8C312.993 177.2 310.593 182.8 310.593 189.6H243.993C243.993 164.8 252.793 144.6 270.393 129C287.993 113 310.593 105 338.193 105C365.793 105 388.193 112.2 405.393 126.6C422.993 141 431.793 160 431.793 183.6C431.793 200.8 427.193 214.8 417.993 225.6C408.793 236 396.993 243.2 382.593 247.2C399.793 252 413.393 260.2 423.393 271.8C433.793 283.4 438.993 298 438.993 315.6C438.993 340.4 429.593 360.8 410.793 376.8C391.993 392.8 367.593 400.8 337.593 400.8Z" fill="currentColor"/>
-                            <path d="M129.529 167.6H104.329V105.2H197.329V400.2H129.529V167.6Z" fill="currentColor"/>
-                            <path d="M337.593 400.8C306.793 400.8 281.593 392.4 261.993 375.6C242.793 358.8 233.193 337 233.193 310.2H303.393C303.393 318.2 306.393 324.8 312.393 330C318.393 335.2 326.393 337.8 336.393 337.8C345.993 337.8 353.793 335 359.793 329.4C366.193 323.8 369.393 316.6 369.393 307.8C369.393 299.8 366.593 293.2 360.993 288C355.393 282.8 348.193 280.2 339.393 280.2H302.193V218.4H339.393C346.193 218.4 351.993 216 356.793 211.2C361.593 206.4 363.993 200.4 363.993 193.2C363.993 184.8 361.393 178.2 356.193 173.4C350.993 168.6 344.393 166.2 336.393 166.2C329.193 166.2 322.993 168.4 317.793 172.8C312.993 177.2 310.593 182.8 310.593 189.6H243.993C243.993 164.8 252.793 144.6 270.393 129C287.993 113 310.593 105 338.193 105C365.793 105 388.193 112.2 405.393 126.6C422.993 141 431.793 160 431.793 183.6C431.793 200.8 427.193 214.8 417.993 225.6C408.793 236 396.993 243.2 382.593 247.2C399.793 252 413.393 260.2 423.393 271.8C433.793 283.4 438.993 298 438.993 315.6C438.993 340.4 429.593 360.8 410.793 376.8C391.993 392.8 367.593 400.8 337.593 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-5-mask)"/>
-                            <path d="M129.529 167.6H104.329V105.2H197.329V400.2H129.529V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-5-mask)"/>
-                        </g>
-                    </svg>
-                    <div class="absolute inset-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]"></div>
-                </div>
-            </main>
+    <section aria-labelledby="hero-titre-1" lang="fr" class="bg-white font-sans text-slate-900">
+        <div class="mx-auto grid max-w-6xl items-start gap-7 px-4 py-6 sm:px-6 sm:py-10 lg:grid-cols-2 lg:gap-12 lg:py-12">
+            <div class="min-w-0"><p class="text-sm font-semibold text-[#1732AB]">Carte de visite numérique · Gratuite</p><h1 id="hero-titre-1" class="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">Vos clients vous contactent plus facilement</h1><p class="mt-4 text-base leading-7 text-slate-700">Votre carte de visite numérique gratuite : un lien à partager, vos coordonnées et vos réseaux sociaux. Son QR code permet d’ajouter vos coordonnées au carnet d’adresses du téléphone.</p><ul class="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-slate-700">
+                    <li><span aria-hidden="true">✓ </span>Gratuit, sans paiement</li>
+                    <li><span aria-hidden="true">✓ </span>Sans compte</li>
+                    <li><span aria-hidden="true">✓ </span>Publiée après validation</li>
+                </ul><a href="#formulaire-carte-1" class="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-xl px-5 py-3 text-center font-semibold bg-[#1732AB] text-white hover:bg-[#102580] focus-visible:outline-[#1732AB] focus-visible:outline-2 focus-visible:outline-offset-4 sm:w-auto">Créer ma carte gratuite</a>
+                <!-- Proposition de réassurance à valider. Ajouter ici le texte sur les données une fois approuvé. -->
+                <p class="mt-2 text-sm text-slate-600">Aucune carte bancaire à fournir.</p><div class="mt-5 rounded-2xl bg-slate-100 p-4"><figure class="flex items-center gap-5"><svg viewBox="0 0 200 330" class="h-32 w-auto shrink-0 lg:h-52" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Illustration uniquement : coordonnées fictives, QR non fonctionnel. -->
+                            <rect x="2" y="2" width="196" height="326" rx="28" fill="#0f172a"/>
+                            <rect x="9" y="9" width="182" height="312" rx="22" fill="white"/>
+                            <rect x="69" y="15" width="62" height="8" rx="4" fill="#0f172a"/>
+                            <rect x="77" y="38" width="46" height="46" rx="14" fill="#1732AB"/>
+                            <path d="M89 69V52h7l4 8 4-8h7v17h-6V61l-5 8-5-8v8Z" fill="white"/>
+                            <g font-family="system-ui, sans-serif" text-anchor="middle" fill="#0f172a">
+                                <text x="100" y="104" font-size="14" font-weight="700">Atelier Martin</text>
+                                <text x="100" y="122" font-size="10">Artisan · Namur</text>
+                                <text x="100" y="145" font-size="10">+32 000 00 00 00</text>
+                                <text x="100" y="162" font-size="10">contact@example.com</text>
+                                <rect x="20" y="176" width="76" height="26" rx="7" fill="#eef2ff"/>
+                                <rect x="104" y="176" width="76" height="26" rx="7" fill="#eef2ff"/>
+                                <text x="58" y="193" font-size="9" fill="#1732AB">Instagram</text>
+                                <text x="142" y="193" font-size="9" fill="#1732AB">Facebook</text>
+                            </g>
+                            <g transform="translate(72 215)" fill="#0f172a">
+                                <path fill-rule="evenodd" d="M0 0h21v21H0ZM4 4v13h13V4ZM35 0h21v21H35ZM39 4v13h13V4ZM0 35h21v21H0ZM4 39v13h13V39Z"/>
+                                <path d="M7 7h7v7H7ZM42 7h7v7h-7ZM7 42h7v7H7ZM25 0h5v10h-5ZM25 15h5v15h-5ZM0 25h10v5H0ZM15 25h5v5h-5ZM35 25h10v5H35ZM50 25h6v10h-6ZM25 35h10v5H25ZM40 35h5v10h-5ZM25 45h5v11h-5ZM35 50h10v6H35ZM50 40h6v16h-6Z"/>
+                            </g>
+                            <text x="100" y="296" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#1732AB">Ajouter à mes contacts</text>
+                        </svg><figcaption class="text-sm leading-6 text-slate-600">Votre logo, votre couleur,<br>vos coordonnées.<br><span class="font-semibold">Exemple de carte</span></figcaption></figure></div></div>
+            <div id="formulaire-carte-1" tabindex="-1" aria-labelledby="formulaire-titre-1" class="min-w-0 scroll-mt-6 rounded-2xl border border-slate-300 bg-white p-5 text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1732AB] sm:p-8">
+                <h2 id="formulaire-titre-1" class="text-xl font-semibold">Les informations de votre carte</h2>
+                <p class="mt-2 text-sm leading-6 text-slate-600">Renseignez votre entreprise, vos coordonnées et vos réseaux sociaux. Ajoutez votre logo et choisissez votre couleur.</p>
+                <!-- Intégrer ici votre formulaire existant. Ce conteneur est la cible du bouton. -->
+                <!-- Retirer ce repère visuel lors de l’intégration. -->
+                <div class="mt-5 rounded-xl border border-dashed border-slate-300 p-6 text-center text-sm text-slate-600">Emplacement du formulaire</div>
+                <p class="mt-4 text-sm leading-6 text-slate-600">Après validation manuelle, vous recevez le lien de votre carte et son QR code.</p>
+            </div>
         </div>
+    </section>
 
-        @if (Route::has('login'))
-            <div class="h-14.5 hidden lg:block"></div>
-        @endif
+    Variante 2 — Partagez vos coordonnées avec un seul lien
+
+    Le lien unique simplifie la promesse ; le téléphone placé à côté du texte montre le résultat sans repousser le formulaire.
+
+    <section aria-labelledby="hero-titre-2" lang="fr" class="bg-white font-sans text-slate-900">
+        <div class="mx-auto grid max-w-6xl items-start gap-7 px-4 py-6 sm:px-6 sm:py-10 lg:grid-cols-2 lg:gap-12 lg:py-12">
+            <div class="min-w-0"><p class="text-sm font-semibold text-[#1732AB]">Carte de visite numérique · Gratuite</p><h1 id="hero-titre-2" class="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">Partagez vos coordonnées avec un seul lien</h1><div class="mt-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4"><div><p class="mt-4 text-base leading-7 text-slate-700">Une carte de visite numérique gratuite avec vos coordonnées, vos réseaux sociaux et un lien à partager. Un QR code permet de vous ajouter au carnet d’adresses du téléphone.</p></div><figure><svg viewBox="0 0 200 330" class="h-32 w-auto shrink-0 lg:h-52" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Illustration uniquement : coordonnées fictives, QR non fonctionnel. -->
+                            <rect x="2" y="2" width="196" height="326" rx="28" fill="#0f172a"/>
+                            <rect x="9" y="9" width="182" height="312" rx="22" fill="white"/>
+                            <rect x="69" y="15" width="62" height="8" rx="4" fill="#0f172a"/>
+                            <rect x="77" y="38" width="46" height="46" rx="14" fill="#1732AB"/>
+                            <path d="M89 69V52h7l4 8 4-8h7v17h-6V61l-5 8-5-8v8Z" fill="white"/>
+                            <g font-family="system-ui, sans-serif" text-anchor="middle" fill="#0f172a">
+                                <text x="100" y="104" font-size="14" font-weight="700">Atelier Martin</text>
+                                <text x="100" y="122" font-size="10">Artisan · Namur</text>
+                                <text x="100" y="145" font-size="10">+32 000 00 00 00</text>
+                                <text x="100" y="162" font-size="10">contact@example.com</text>
+                                <rect x="20" y="176" width="76" height="26" rx="7" fill="#eef2ff"/>
+                                <rect x="104" y="176" width="76" height="26" rx="7" fill="#eef2ff"/>
+                                <text x="58" y="193" font-size="9" fill="#1732AB">Instagram</text>
+                                <text x="142" y="193" font-size="9" fill="#1732AB">Facebook</text>
+                            </g>
+                            <g transform="translate(72 215)" fill="#0f172a">
+                                <path fill-rule="evenodd" d="M0 0h21v21H0ZM4 4v13h13V4ZM35 0h21v21H35ZM39 4v13h13V4ZM0 35h21v21H0ZM4 39v13h13V39Z"/>
+                                <path d="M7 7h7v7H7ZM42 7h7v7h-7ZM7 42h7v7H7ZM25 0h5v10h-5ZM25 15h5v15h-5ZM0 25h10v5H0ZM15 25h5v5h-5ZM35 25h10v5H35ZM50 25h6v10h-6ZM25 35h10v5H25ZM40 35h5v10h-5ZM25 45h5v11h-5ZM35 50h10v6H35ZM50 40h6v16h-6Z"/>
+                            </g>
+                            <text x="100" y="296" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#1732AB">Ajouter à mes contacts</text>
+                        </svg><figcaption class="mt-1 text-center text-xs text-slate-600">Exemple de carte</figcaption></figure></div><ul class="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-slate-700">
+                    <li><span aria-hidden="true">✓ </span>Gratuit, sans paiement</li>
+                    <li><span aria-hidden="true">✓ </span>Sans compte</li>
+                    <li><span aria-hidden="true">✓ </span>Publiée après validation</li>
+                </ul><a href="#formulaire-carte-2" class="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-xl px-5 py-3 text-center font-semibold bg-[#1732AB] text-white hover:bg-[#102580] focus-visible:outline-[#1732AB] focus-visible:outline-2 focus-visible:outline-offset-4 sm:w-auto">Créer ma carte gratuite</a>
+                <!-- Proposition de réassurance à valider. Ajouter ici le texte sur les données une fois approuvé. -->
+                <p class="mt-2 text-sm text-slate-600">Aucune carte bancaire à fournir.</p></div>
+            <div id="formulaire-carte-2" tabindex="-1" aria-labelledby="formulaire-titre-2" class="min-w-0 scroll-mt-6 rounded-2xl border border-slate-300 bg-white p-5 text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1732AB] sm:p-8">
+                <h2 id="formulaire-titre-2" class="text-xl font-semibold">Les informations de votre carte</h2>
+                <p class="mt-2 text-sm leading-6 text-slate-600">Renseignez votre entreprise, vos coordonnées et vos réseaux sociaux. Ajoutez votre logo et choisissez votre couleur.</p>
+                <!-- Intégrer ici votre formulaire existant. Ce conteneur est la cible du bouton. -->
+                <!-- Retirer ce repère visuel lors de l’intégration. -->
+                <div class="mt-5 rounded-xl border border-dashed border-slate-300 p-6 text-center text-sm text-slate-600">Emplacement du formulaire</div>
+                <p class="mt-4 text-sm leading-6 text-slate-600">Après validation manuelle, vous recevez le lien de votre carte et son QR code.</p>
+            </div>
+        </div>
+    </section>
+
+    Variante 3 — Gardez votre place dans les contacts de vos clients
+
+    L’accroche met en avant l’usage après la rencontre, tandis que le panneau bleu distingue nettement la promesse du formulaire.
+
+    <section aria-labelledby="hero-titre-3" lang="fr" class="bg-slate-50 font-sans text-slate-900">
+        <div class="mx-auto grid max-w-6xl items-start gap-7 px-4 py-6 sm:px-6 sm:py-10 lg:grid-cols-2 lg:gap-12 lg:py-12">
+            <div class="min-w-0 rounded-2xl bg-[#1732AB] p-5 text-white sm:p-8"><p class="text-sm font-semibold text-white">Carte de visite numérique · Gratuite</p><h1 id="hero-titre-3" class="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">Gardez votre place dans les contacts de vos clients</h1><p class="mt-4 text-base leading-7 text-white">Votre carte de visite numérique gratuite réunit vos coordonnées et vos réseaux sociaux sur un lien à partager. Avec le QR code, vos clients peuvent vous ajouter au carnet d’adresses de leur téléphone.</p><ul class="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-white">
+                    <li><span aria-hidden="true">✓ </span>Gratuit, sans paiement</li>
+                    <li><span aria-hidden="true">✓ </span>Sans compte</li>
+                    <li><span aria-hidden="true">✓ </span>Publiée après validation</li>
+                </ul><a href="#formulaire-carte-3" class="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-xl px-5 py-3 text-center font-semibold bg-white text-[#1732AB] hover:bg-slate-100 focus-visible:outline-white focus-visible:outline-2 focus-visible:outline-offset-4 sm:w-auto">Créer ma carte gratuite</a>
+                <!-- Proposition de réassurance à valider. Ajouter ici le texte sur les données une fois approuvé. -->
+                <p class="mt-2 text-sm text-white">Aucune carte bancaire à fournir.</p><div class="mt-5 border-t border-white/40 pt-4"><figure class="flex items-center gap-5"><svg viewBox="0 0 200 330" class="h-32 w-auto shrink-0 lg:h-52" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Illustration uniquement : coordonnées fictives, QR non fonctionnel. -->
+                            <rect x="2" y="2" width="196" height="326" rx="28" fill="#0f172a"/>
+                            <rect x="9" y="9" width="182" height="312" rx="22" fill="white"/>
+                            <rect x="69" y="15" width="62" height="8" rx="4" fill="#0f172a"/>
+                            <rect x="77" y="38" width="46" height="46" rx="14" fill="#1732AB"/>
+                            <path d="M89 69V52h7l4 8 4-8h7v17h-6V61l-5 8-5-8v8Z" fill="white"/>
+                            <g font-family="system-ui, sans-serif" text-anchor="middle" fill="#0f172a">
+                                <text x="100" y="104" font-size="14" font-weight="700">Atelier Martin</text>
+                                <text x="100" y="122" font-size="10">Artisan · Namur</text>
+                                <text x="100" y="145" font-size="10">+32 000 00 00 00</text>
+                                <text x="100" y="162" font-size="10">contact@example.com</text>
+                                <rect x="20" y="176" width="76" height="26" rx="7" fill="#eef2ff"/>
+                                <rect x="104" y="176" width="76" height="26" rx="7" fill="#eef2ff"/>
+                                <text x="58" y="193" font-size="9" fill="#1732AB">Instagram</text>
+                                <text x="142" y="193" font-size="9" fill="#1732AB">Facebook</text>
+                            </g>
+                            <g transform="translate(72 215)" fill="#0f172a">
+                                <path fill-rule="evenodd" d="M0 0h21v21H0ZM4 4v13h13V4ZM35 0h21v21H35ZM39 4v13h13V4ZM0 35h21v21H0ZM4 39v13h13V39Z"/>
+                                <path d="M7 7h7v7H7ZM42 7h7v7h-7ZM7 42h7v7H7ZM25 0h5v10h-5ZM25 15h5v15h-5ZM0 25h10v5H0ZM15 25h5v5h-5ZM35 25h10v5H35ZM50 25h6v10h-6ZM25 35h10v5H25ZM40 35h5v10h-5ZM25 45h5v11h-5ZM35 50h10v6H35ZM50 40h6v16h-6Z"/>
+                            </g>
+                            <text x="100" y="296" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#1732AB">Ajouter à mes contacts</text>
+                        </svg><figcaption class="text-sm leading-6 text-white">Votre logo, votre couleur,<br>vos coordonnées.<br><span class="font-semibold">Exemple de carte</span></figcaption></figure></div></div>
+            <div id="formulaire-carte-3" tabindex="-1" aria-labelledby="formulaire-titre-3" class="min-w-0 scroll-mt-6 rounded-2xl border border-slate-300 bg-white p-5 text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1732AB] sm:p-8">
+                <h2 id="formulaire-titre-3" class="text-xl font-semibold">Les informations de votre carte</h2>
+                <p class="mt-2 text-sm leading-6 text-slate-600">Renseignez votre entreprise, vos coordonnées et vos réseaux sociaux. Ajoutez votre logo et choisissez votre couleur.</p>
+                <!-- Intégrer ici votre formulaire existant. Ce conteneur est la cible du bouton. -->
+                <!-- Retirer ce repère visuel lors de l’intégration. -->
+                <div class="mt-5 rounded-xl border border-dashed border-slate-300 p-6 text-center text-sm text-slate-600">Emplacement du formulaire</div>
+                <p class="mt-4 text-sm leading-6 text-slate-600">Après validation manuelle, vous recevez le lien de votre carte et son QR code.</p>
+            </div>
+        </div>
+    </section>
+    <section class="bg-slate-50 py-8 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:gap-12">
+
+                <!-- Colonne de gauche : Promesse -->
+                <div class="w-full lg:w-7/12 flex flex-col gap-6 lg:pr-8">
+                    <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+                        Votre carte de visite numérique, gratuite et toujours disponible.
+                    </h1>
+
+                    <p class="text-lg text-slate-600">
+                        Partagez vos coordonnées d'un simple scan. Inclus : votre lien web personnalisé, un QR code dédié et l'ajout direct au répertoire téléphonique de vos prospects.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                        <ul class="flex flex-col gap-3 text-slate-700">
+                            <li class="flex items-center gap-2">
+                                <svg class="h-5 w-5 text-[#1732AB] shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                <span>100 % gratuit</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="h-5 w-5 text-[#1732AB] shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                <span>Sans création de compte</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="h-5 w-5 text-[#1732AB] shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                <span>Publiée après validation manuelle</span>
+                            </li>
+                        </ul>
+
+                        <!-- Visuel : Maquette Téléphone (Intégrée à côté des puces sur grand écran) -->
+                        <div aria-hidden="true" class="relative w-36 h-64 rounded-[1.5rem] border-[4px] border-slate-900 bg-white shadow-lg overflow-hidden shrink-0 mt-4 sm:mt-0 mx-auto sm:mx-0">
+                            <div class="absolute top-0 inset-x-0 h-3 bg-slate-900 rounded-b-lg w-16 mx-auto"></div>
+                            <div class="pt-6 pb-4 px-3 flex flex-col items-center">
+                                <div class="w-10 h-10 rounded-full bg-[#1732AB] flex items-center justify-center mb-2">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <div class="w-3/4 h-2 bg-slate-200 rounded-full mb-1"></div>
+                                <div class="w-1/2 h-1.5 bg-slate-200 rounded-full mb-3"></div>
+                                <div class="w-16 h-16 bg-white border border-slate-200 rounded p-1 mb-3 flex flex-col justify-between">
+                                    <div class="flex justify-between"><div class="w-3 h-3 bg-slate-800"></div><div class="w-3 h-3 bg-slate-800"></div></div>
+                                    <div class="w-full flex justify-center"><div class="w-8 h-2 bg-slate-800"></div></div>
+                                    <div class="flex justify-between"><div class="w-3 h-3 bg-slate-800"></div><div class="w-3 h-3 bg-slate-800"></div></div>
+                                </div>
+                                <div class="w-full h-6 rounded bg-[#1732AB] mb-2"></div>
+                                <div class="flex gap-1.5"><div class="w-4 h-4 rounded-full bg-slate-200"></div><div class="w-4 h-4 rounded-full bg-slate-200"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex flex-col items-start gap-2">
+                        <a href="#formulaire" class="inline-flex items-center justify-center rounded-md bg-[#1732AB] px-8 py-3.5 text-base font-semibold text-white shadow-sm hover:bg-[#11247a] focus:outline-none focus:ring-2 focus:ring-[#1732AB] focus:ring-offset-2 w-full sm:w-auto">
+                            Créer ma carte gratuite
+                        </a>
+                        <p class="text-xs text-slate-500 font-medium ml-1">Vos données ne sont jamais revendues ou partagées.</p>
+                    </div>
+                </div>
+
+                <!-- Colonne de droite : Emplacement Formulaire -->
+                <div id="formulaire" class="w-full lg:w-5/12 mt-10 lg:mt-0 relative">
+                    <div class="bg-white rounded-xl shadow-md border border-slate-100 p-8 flex flex-col items-center justify-center min-h-[450px]">
+                        <!-- Le formulaire viendra ici -->
+                        <p class="text-slate-400 font-medium text-center">[ Espace réservé au formulaire ]</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="bg-white py-8 px-4 sm:px-6 lg:py-16 lg:px-8 border-b border-slate-100">
+        <div class="mx-auto max-w-7xl">
+            <div class="flex flex-col lg:flex-row lg:gap-16">
+
+                <!-- Colonne de gauche : Promesse et visuel superposés -->
+                <div class="w-full lg:w-1/2 flex flex-col">
+                    <h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl leading-tight">
+                        Ne perdez plus aucun contact grâce à votre carte digitale.
+                    </h1>
+                    <p class="mt-4 text-lg text-slate-600">
+                        Un mini-site pour votre activité professionnelle. Vos clients scannent votre QR code, consultent votre page et enregistrent vos infos instantanément.
+                    </p>
+
+                    <!-- Preuves et Visuel en grille -->
+                    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+                        <ul class="flex flex-col gap-4 text-sm font-medium text-slate-700">
+                            <li class="flex items-start gap-3">
+              <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1732AB]/10 text-[#1732AB] p-1">
+                <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              </span>
+                                Création 100 % gratuite
+                            </li>
+                            <li class="flex items-start gap-3">
+              <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1732AB]/10 text-[#1732AB] p-1">
+                <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              </span>
+                                Sans compte ni mot de passe
+                            </li>
+                            <li class="flex items-start gap-3">
+              <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1732AB]/10 text-[#1732AB] p-1">
+                <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              </span>
+                                Mise en ligne après notre validation
+                            </li>
+                        </ul>
+
+                        <!-- Visuel : Maquette inclinée stylisée -->
+                        <div aria-hidden="true" class="mx-auto w-40 h-72 rounded-[2rem] border-[5px] border-slate-800 bg-slate-50 shadow-xl overflow-hidden relative rotate-2">
+                            <div class="absolute top-0 inset-x-0 h-4 bg-slate-800 rounded-b-xl w-16 mx-auto"></div>
+                            <div class="pt-8 px-4 flex flex-col items-center">
+                                <!-- Profil -->
+                                <div class="w-12 h-12 rounded-full bg-[#1732AB] mb-3"></div>
+                                <div class="w-20 h-2 bg-slate-200 rounded mb-4"></div>
+                                <!-- QR Code -->
+                                <div class="w-20 h-20 bg-white border border-slate-300 shadow-sm p-1.5 mb-4 grid grid-cols-2 gap-1">
+                                    <div class="bg-slate-900 rounded-sm"></div><div class="bg-slate-900 rounded-sm"></div>
+                                    <div class="bg-slate-900 rounded-sm"></div><div class="bg-slate-900 rounded-sm"></div>
+                                </div>
+                                <div class="w-full h-8 rounded-lg bg-[#1732AB] mt-2"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex flex-col items-center sm:items-start text-center sm:text-left mb-6 lg:mb-0">
+                        <a href="#formulaire" class="w-full sm:w-auto inline-block rounded-md bg-[#1732AB] px-8 py-3.5 text-base font-bold text-white shadow hover:bg-[#11247a] focus:outline-none focus:ring-2 focus:ring-[#1732AB] focus:ring-offset-2">
+                            Créer ma carte gratuite
+                        </a>
+                        <span class="mt-2 text-xs text-slate-500">Service sans abonnement. Vos données restent privées.</span>
+                    </div>
+                </div>
+
+                <!-- Colonne de droite : Formulaire -->
+                <div id="formulaire" class="w-full lg:w-1/2">
+                    <div class="bg-slate-50 rounded-2xl p-6 sm:p-10 flex flex-col items-center justify-center min-h-[500px] border border-slate-200">
+                        <p class="text-slate-400 font-medium">[ Espace réservé au formulaire ]</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="bg-[#f8fafc] py-10 px-4 sm:px-6 lg:py-20 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+            <div class="flex flex-col lg:flex-row-reverse lg:items-center lg:gap-12">
+
+                <!-- Colonne de droite (en HTML) : Formulaire (Affiché à droite sur bureau, en bas sur mobile) -->
+                <div id="formulaire" class="w-full lg:w-5/12 mb-10 lg:mb-0">
+                    <div class="bg-white rounded-xl shadow-lg border border-slate-100 p-8 flex flex-col items-center justify-center min-h-[480px]">
+                        <p class="text-slate-400 font-medium">[ Espace réservé au formulaire ]</p>
+                    </div>
+                </div>
+
+                <!-- Colonne de gauche (en HTML) : Contenu -->
+                <div class="w-full lg:w-7/12">
+        <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-[#1732AB] uppercase bg-[#1732AB]/10 rounded-full">
+          Service pour indépendants
+        </span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-5">
+                        Démarquez-vous avec une carte de visite digitale entièrement offerte.
+                    </h1>
+                    <p class="text-lg text-slate-600 mb-8 max-w-2xl">
+                        Remplacez la carte papier. Générez un lien de contact unique, un QR code prêt à flasher, et laissez vos futurs clients enregistrer vos coordonnées directement dans leur smartphone.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-8 items-start mb-8">
+                        <!-- Visuel : Minimaliste -->
+                        <div aria-hidden="true" class="w-32 h-56 bg-slate-900 rounded-2xl shadow-xl flex flex-col p-1.5 shrink-0">
+                            <div class="w-full h-full bg-white rounded-xl p-2 flex flex-col items-center">
+                                <div class="w-8 h-8 rounded-full bg-[#1732AB] mt-2 mb-2"></div>
+                                <div class="w-16 h-1 bg-slate-200 mb-4"></div>
+                                <div class="w-16 h-16 bg-slate-100 border border-slate-300 flex items-center justify-center mb-3">
+                                    <div class="w-10 h-10 bg-slate-800"></div>
+                                </div>
+                                <div class="w-full h-4 bg-[#1732AB] rounded-sm mt-auto mb-1"></div>
+                            </div>
+                        </div>
+
+                        <ul class="flex flex-col gap-4 text-slate-700 font-medium">
+                            <li class="flex items-center gap-3">
+                                <div class="h-2 w-2 rounded-full bg-[#1732AB]"></div>
+                                Totalement gratuit, sans frais d'installation
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="h-2 w-2 rounded-full bg-[#1732AB]"></div>
+                                Utilisation immédiate, aucun compte nécessaire
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="h-2 w-2 rounded-full bg-[#1732AB]"></div>
+                                Page vérifiée et validée manuellement par nos soins
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <a href="#formulaire" class="inline-flex w-full sm:w-auto items-center justify-center rounded-lg bg-[#1732AB] px-8 py-4 text-base font-bold text-white shadow-md hover:bg-[#11247a] focus:outline-none focus:ring-4 focus:ring-[#1732AB]/20 transition-all">
+                            Créer ma carte gratuite
+                        </a>
+                        <p class="mt-3 text-sm text-slate-500 font-medium text-center sm:text-left">
+                            🔒 Vos informations de contact sont traitées en toute sécurité.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {{-- ═══════════════════════════════════════════════════════════════════════
+     Hero, variante 1 : « le scan »
+     Tailwind CSS 4. Aucune dépendance externe, aucun JavaScript.
+     La couleur principale est une variable CSS locale : un seul endroit à changer.
+     ═══════════════════════════════════════════════════════════════════════ --}}
+
+    <section
+        class="relative bg-white"
+        style="--brand:#1732AB; --brand-dark:#122885; --brand-soft:#EEF1FB;"
+        aria-labelledby="hero-titre"
+    >
+        <div class="mx-auto max-w-6xl px-5 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+            <div class="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_330px] lg:gap-10 xl:grid-cols-[minmax(0,1fr)_390px] xl:gap-12">
+
+                {{-- ───────── Colonne promesse ───────── --}}
+                <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_170px] lg:items-center lg:gap-6 xl:grid-cols-[minmax(0,1fr)_200px] xl:gap-8">
+
+                    <div class="max-w-xl">
+                        {{-- Le bandeau est masqué sous 640 px pour garder le hero court sur mobile --}}
+                        <p class="hidden items-center gap-2 rounded-full bg-[var(--brand-soft)] px-3 py-1 text-sm font-medium text-[var(--brand)] sm:inline-flex">
+                            <span class="h-1.5 w-1.5 rounded-full bg-[var(--brand)]" aria-hidden="true"></span>
+                            Gratuit pour les indépendants et les PME
+                        </p>
+
+                        <h1 id="hero-titre" class="text-[1.75rem] sm:mt-4 font-bold leading-[1.15] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.1rem] xl:text-[2.6rem]">
+                            Un scan, et vos coordonnées sont dans leur téléphone
+                        </h1>
+
+                        <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                            Une page à votre nom, avec un QR code à faire scanner, un bouton qui ajoute vos
+                            coordonnées au carnet d'adresses, et un lien à partager.
+                        </p>
+
+                        <ul class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-700 sm:text-base">
+                            <li class="flex items-center gap-2">
+                                <svg class="h-4 w-4 shrink-0 text-[var(--brand)]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z"/></svg>
+                                Gratuit, sans abonnement
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="h-4 w-4 shrink-0 text-[var(--brand)]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z"/></svg>
+                                Sans compte ni mot de passe
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="h-4 w-4 shrink-0 text-[var(--brand)]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z"/></svg>
+                                En ligne après ma validation
+                            </li>
+                        </ul>
+
+                        <div class="mt-6 sm:mt-7">
+                            <a
+                                href="#formulaire"
+                                class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--brand)] px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-[var(--brand-dark)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)] sm:w-auto"
+                            >
+                                Créer ma carte gratuite
+                                <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10.6 3.3a1 1 0 0 0-1.4 1.4l3.9 3.9H3a1 1 0 1 0 0 2h10.1l-3.9 3.9a1 1 0 1 0 1.4 1.4l5.6-5.6a1 1 0 0 0 0-1.4z"/></svg>
+                            </a>
+
+                            {{-- ▼ PHRASE DE RÉASSURANCE : à remplacer par votre formulation validée --}}
+                            <p class="mt-3 text-sm text-slate-500">
+                                Vos informations servent uniquement à créer votre carte.
+                            </p>
+                        </div>
+                    </div>
+
+                    {{-- Aperçu --}}
+                    <div class="mt-6 flex justify-center lg:mt-0 lg:justify-end">
+                        <svg viewBox="0 0 260 520" class="h-auto w-[130px] drop-shadow-xl sm:w-[180px] lg:w-[200px]" role="img" aria-labelledby="apercu-titre">
+                            <title id="apercu-titre">Aperçu d'une carte de visite numérique sur un téléphone : logo, nom, coordonnées, boutons de réseaux sociaux, QR code et bouton d'ajout aux contacts.</title>
+                            <rect x="0" y="0" width="260" height="520" rx="34" fill="#0F172A"/>
+                            <rect x="8" y="8" width="244" height="504" rx="28" fill="#FFFFFF"/>
+                            <rect x="8" y="8" width="244" height="120" rx="28" fill="var(--brand)"/>
+                            <rect x="8" y="100" width="244" height="28" fill="var(--brand)"/>
+                            <rect x="98" y="16" width="64" height="9" rx="4.5" fill="#0F172A" opacity=".45"/>
+                            <circle cx="130" cy="116" r="31" fill="#FFFFFF"/>
+                            <circle cx="130" cy="116" r="31" fill="none" stroke="#E2E8F0" stroke-width="1.5"/>
+                            <text x="130" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="var(--brand)">JD</text>
+                            <text x="130" y="176" text-anchor="middle" font-family="system-ui, sans-serif" font-size="17" font-weight="700" fill="#0F172A">Julie Dupont</text>
+                            <text x="130" y="195" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#64748B">Dupont &amp; Fille, toiture</text>
+                            <rect x="34" y="216" width="22" height="22" rx="7" fill="var(--brand-soft)"/>
+                            <path d="M41 222.5c0-.8.7-1.5 1.5-1.5h1.6c.6 0 1.2.4 1.4 1l.5 1.6c.2.5 0 1.1-.4 1.4l-.8.6c.6 1.3 1.6 2.3 2.9 2.9l.6-.8c.3-.4.9-.6 1.4-.4l1.6.5c.6.2 1 .8 1 1.4v1.6c0 .8-.7 1.5-1.5 1.5-5.4 0-9.8-4.4-9.8-9.8z" fill="var(--brand)"/>
+                            <text x="64" y="232" font-family="system-ui, sans-serif" font-size="12" fill="#334155">+32 478 12 34 56</text>
+                            <rect x="34" y="248" width="22" height="22" rx="7" fill="var(--brand-soft)"/>
+                            <path d="M41 255.5c0-.8.7-1.5 1.5-1.5h11c.8 0 1.5.7 1.5 1.5v9c0 .8-.7 1.5-1.5 1.5h-11c-.8 0-1.5-.7-1.5-1.5zm2 .5 5.5 3.8 5.5-3.8z" fill="var(--brand)"/>
+                            <text x="64" y="264" font-family="system-ui, sans-serif" font-size="12" fill="#334155">julie@dupont-toiture.be</text>
+                            <g>
+                                <rect x="64" y="288" width="36" height="36" rx="12" fill="#F1F5F9"/>
+                                <path d="M76 306a4 4 0 0 1 4-4h2v2.4h-2a1.6 1.6 0 0 0 0 3.2h2V310h-2a4 4 0 0 1-4-4zm12 0a4 4 0 0 0-4-4h-2v2.4h2a1.6 1.6 0 0 1 0 3.2h-2V310h2a4 4 0 0 0 4-4zm-9 0h6v2h-6z" fill="#475569"/>
+                                <rect x="112" y="288" width="36" height="36" rx="12" fill="#F1F5F9"/>
+                                <circle cx="130" cy="306" r="8" fill="none" stroke="#475569" stroke-width="1.8"/>
+                                <path d="M122 306h16M130 298c2.4 2.4 2.4 13.6 0 16M130 298c-2.4 2.4-2.4 13.6 0 16" fill="none" stroke="#475569" stroke-width="1.8"/>
+                                <rect x="160" y="288" width="36" height="36" rx="12" fill="#F1F5F9"/>
+                                <path d="M170 301.5c0-.8.7-1.5 1.5-1.5h13c.8 0 1.5.7 1.5 1.5v8c0 .8-.7 1.5-1.5 1.5H178l-4.5 3.5V311h-2a1.5 1.5 0 0 1-1.5-1.5z" fill="#475569"/>
+                            </g>
+                            <rect x="74" y="340" width="112" height="112" rx="14" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+                            <g transform="translate(86 352) scale(4.19)" fill="#0F172A" shape-rendering="crispEdges">
+                                <path d="M0 0h7v1H0zM8 0h1v1H8zM12 0h1v1H12zM14 0h7v1H14zM0 1h1v1H0zM6 1h1v1H6zM8 1h2v1H8zM11 1h1v1H11zM14 1h1v1H14zM20 1h1v1H20zM0 2h1v1H0zM2 2h3v1H2zM6 2h1v1H6zM8 2h5v1H8zM14 2h1v1H14zM16 2h3v1H16zM20 2h1v1H20zM0 3h1v1H0zM2 3h3v1H2zM6 3h1v1H6zM8 3h1v1H8zM10 3h1v1H10zM12 3h1v1H12zM14 3h1v1H14zM16 3h3v1H16zM20 3h1v1H20zM0 4h1v1H0zM2 4h3v1H2zM6 4h1v1H6zM9 4h4v1H9zM14 4h1v1H14zM16 4h3v1H16zM20 4h1v1H20zM0 5h1v1H0zM6 5h1v1H6zM8 5h1v1H8zM10 5h1v1H10zM12 5h1v1H12zM14 5h1v1H14zM20 5h1v1H20zM0 6h7v1H0zM8 6h1v1H8zM10 6h1v1H10zM12 6h1v1H12zM14 6h7v1H14zM0 8h2v1H0zM4 8h3v1H4zM12 8h1v1H12zM15 8h1v1H15zM17 8h4v1H17zM1 9h1v1H1zM3 9h1v1H3zM7 9h1v1H7zM12 9h1v1H12zM16 9h1v1H16zM18 9h1v1H18zM2 10h5v1H2zM12 10h1v1H12zM14 10h4v1H14zM19 10h1v1H19zM1 11h2v1H1zM7 11h2v1H7zM10 11h4v1H10zM15 11h1v1H15zM20 11h1v1H20zM0 12h1v1H0zM5 12h4v1H5zM11 12h1v1H11zM13 12h1v1H13zM19 12h1v1H19zM8 13h7v1H8zM16 13h1v1H16zM19 13h1v1H19zM0 14h7v1H0zM11 14h1v1H11zM14 14h1v1H14zM16 14h2v1H16zM19 14h1v1H19zM0 15h1v1H0zM6 15h1v1H6zM8 15h3v1H8zM13 15h1v1H13zM16 15h1v1H16zM20 15h1v1H20zM0 16h1v1H0zM2 16h3v1H2zM6 16h1v1H6zM8 16h3v1H8zM12 16h2v1H12zM15 16h1v1H15zM19 16h1v1H19zM0 17h1v1H0zM2 17h3v1H2zM6 17h1v1H6zM12 17h1v1H12zM14 17h1v1H14zM16 17h1v1H16zM19 17h2v1H19zM0 18h1v1H0zM2 18h3v1H2zM6 18h1v1H6zM10 18h1v1H10zM12 18h2v1H12zM16 18h1v1H16zM0 19h1v1H0zM6 19h1v1H6zM8 19h5v1H8zM0 20h7v1H0zM8 20h4v1H8zM13 20h3v1H13zM17 20h1v1H17zM20 20h1v1H20z"/>
+                            </g>
+                            <rect x="40" y="468" width="180" height="34" rx="17" fill="var(--brand)"/>
+                            <text x="130" y="490" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#FFFFFF">Ajouter aux contacts</text>
+                        </svg>
+                    </div>
+                </div>
+
+                {{-- ───────── Colonne formulaire ───────── --}}
+                <div id="formulaire" class="scroll-mt-6">
+                    <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
+                        <h2 class="text-lg font-semibold text-slate-900">Créer ma carte</h2>
+                        <p class="mt-1 text-sm text-slate-600">Entreprise, contact, réseaux sociaux, logo, couleur.</p>
+
+                        {{-- ▼ EMPLACEMENT DU FORMULAIRE : remplacez tout ce bloc par @include('carte.partials.formulaire') --}}
+                        <div class="mt-6 space-y-4" aria-hidden="true">
+                            <div class="space-y-1.5">
+                                <div class="h-3 w-24 rounded bg-slate-200"></div>
+                                <div class="h-11 rounded-lg border border-slate-200 bg-slate-50"></div>
+                            </div>
+                            <div class="space-y-1.5">
+                                <div class="h-3 w-20 rounded bg-slate-200"></div>
+                                <div class="h-11 rounded-lg border border-slate-200 bg-slate-50"></div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="space-y-1.5">
+                                    <div class="h-3 w-16 rounded bg-slate-200"></div>
+                                    <div class="h-11 rounded-lg border border-slate-200 bg-slate-50"></div>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <div class="h-3 w-16 rounded bg-slate-200"></div>
+                                    <div class="h-11 rounded-lg border border-slate-200 bg-slate-50"></div>
+                                </div>
+                            </div>
+                            <div class="h-11 rounded-lg bg-[var(--brand)] opacity-90"></div>
+                        </div>
+                        {{-- ▲ FIN DE L'EMPLACEMENT --}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {{-- ═══════════════════════════════════════════════════════════════════════
+     Hero, variante 2 : « la carte qui ne se perd pas »
+     Le visuel passe en premier dans la colonne de gauche.
+     Tailwind CSS 4. Aucune dépendance externe, aucun JavaScript.
+     ═══════════════════════════════════════════════════════════════════════ --}}
+
+    <section
+        class="relative bg-[#F6F7FC]"
+        style="--brand:#1732AB; --brand-dark:#122885; --brand-soft:#E7EBF8;"
+        aria-labelledby="hero-titre"
+    >
+        <div class="mx-auto max-w-6xl px-5 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+            <div class="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_330px] lg:gap-10 xl:grid-cols-[minmax(0,1fr)_390px] xl:gap-12">
+
+                {{-- ───────── Colonne promesse ───────── --}}
+                <div class="sm:grid sm:grid-cols-[190px_minmax(0,1fr)] sm:items-center sm:gap-8 lg:grid-cols-[170px_minmax(0,1fr)] lg:gap-6 xl:grid-cols-[205px_minmax(0,1fr)] xl:gap-9">
+
+                    {{-- Aperçu : téléphone à partir de 640 px, bandeau compact en dessous --}}
+                    <div class="hidden sm:flex sm:justify-center">
+                        <svg viewBox="0 0 260 520" class="h-auto w-[170px] drop-shadow-xl lg:w-[190px]" role="img" aria-labelledby="apercu-titre">
+                            <title id="apercu-titre">Aperçu d'une carte de visite numérique sur un téléphone : logo, nom, coordonnées, boutons de réseaux sociaux, QR code et bouton d'ajout aux contacts.</title>
+                            <rect x="0" y="0" width="260" height="520" rx="34" fill="#0F172A"/>
+                            <rect x="8" y="8" width="244" height="504" rx="28" fill="#FFFFFF"/>
+                            <rect x="8" y="8" width="244" height="120" rx="28" fill="var(--brand)"/>
+                            <rect x="8" y="100" width="244" height="28" fill="var(--brand)"/>
+                            <rect x="98" y="16" width="64" height="9" rx="4.5" fill="#0F172A" opacity=".45"/>
+                            <circle cx="130" cy="116" r="31" fill="#FFFFFF"/>
+                            <circle cx="130" cy="116" r="31" fill="none" stroke="#E2E8F0" stroke-width="1.5"/>
+                            <text x="130" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="var(--brand)">JD</text>
+                            <text x="130" y="176" text-anchor="middle" font-family="system-ui, sans-serif" font-size="17" font-weight="700" fill="#0F172A">Julie Dupont</text>
+                            <text x="130" y="195" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#64748B">Dupont &amp; Fille, toiture</text>
+                            <rect x="34" y="216" width="22" height="22" rx="7" fill="var(--brand-soft)"/>
+                            <path d="M41 222.5c0-.8.7-1.5 1.5-1.5h1.6c.6 0 1.2.4 1.4 1l.5 1.6c.2.5 0 1.1-.4 1.4l-.8.6c.6 1.3 1.6 2.3 2.9 2.9l.6-.8c.3-.4.9-.6 1.4-.4l1.6.5c.6.2 1 .8 1 1.4v1.6c0 .8-.7 1.5-1.5 1.5-5.4 0-9.8-4.4-9.8-9.8z" fill="var(--brand)"/>
+                            <text x="64" y="232" font-family="system-ui, sans-serif" font-size="12" fill="#334155">+32 478 12 34 56</text>
+                            <rect x="34" y="248" width="22" height="22" rx="7" fill="var(--brand-soft)"/>
+                            <path d="M41 255.5c0-.8.7-1.5 1.5-1.5h11c.8 0 1.5.7 1.5 1.5v9c0 .8-.7 1.5-1.5 1.5h-11c-.8 0-1.5-.7-1.5-1.5zm2 .5 5.5 3.8 5.5-3.8z" fill="var(--brand)"/>
+                            <text x="64" y="264" font-family="system-ui, sans-serif" font-size="12" fill="#334155">julie@dupont-toiture.be</text>
+                            <g>
+                                <rect x="64" y="288" width="36" height="36" rx="12" fill="#F1F5F9"/>
+                                <path d="M76 306a4 4 0 0 1 4-4h2v2.4h-2a1.6 1.6 0 0 0 0 3.2h2V310h-2a4 4 0 0 1-4-4zm12 0a4 4 0 0 0-4-4h-2v2.4h2a1.6 1.6 0 0 1 0 3.2h-2V310h2a4 4 0 0 0 4-4zm-9 0h6v2h-6z" fill="#475569"/>
+                                <rect x="112" y="288" width="36" height="36" rx="12" fill="#F1F5F9"/>
+                                <circle cx="130" cy="306" r="8" fill="none" stroke="#475569" stroke-width="1.8"/>
+                                <path d="M122 306h16M130 298c2.4 2.4 2.4 13.6 0 16M130 298c-2.4 2.4-2.4 13.6 0 16" fill="none" stroke="#475569" stroke-width="1.8"/>
+                                <rect x="160" y="288" width="36" height="36" rx="12" fill="#F1F5F9"/>
+                                <path d="M170 301.5c0-.8.7-1.5 1.5-1.5h13c.8 0 1.5.7 1.5 1.5v8c0 .8-.7 1.5-1.5 1.5H178l-4.5 3.5V311h-2a1.5 1.5 0 0 1-1.5-1.5z" fill="#475569"/>
+                            </g>
+                            <rect x="74" y="340" width="112" height="112" rx="14" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+                            <g transform="translate(86 352) scale(4.19)" fill="#0F172A" shape-rendering="crispEdges">
+                                <path d="M0 0h7v1H0zM8 0h1v1H8zM12 0h1v1H12zM14 0h7v1H14zM0 1h1v1H0zM6 1h1v1H6zM8 1h2v1H8zM11 1h1v1H11zM14 1h1v1H14zM20 1h1v1H20zM0 2h1v1H0zM2 2h3v1H2zM6 2h1v1H6zM8 2h5v1H8zM14 2h1v1H14zM16 2h3v1H16zM20 2h1v1H20zM0 3h1v1H0zM2 3h3v1H2zM6 3h1v1H6zM8 3h1v1H8zM10 3h1v1H10zM12 3h1v1H12zM14 3h1v1H14zM16 3h3v1H16zM20 3h1v1H20zM0 4h1v1H0zM2 4h3v1H2zM6 4h1v1H6zM9 4h4v1H9zM14 4h1v1H14zM16 4h3v1H16zM20 4h1v1H20zM0 5h1v1H0zM6 5h1v1H6zM8 5h1v1H8zM10 5h1v1H10zM12 5h1v1H12zM14 5h1v1H14zM20 5h1v1H20zM0 6h7v1H0zM8 6h1v1H8zM10 6h1v1H10zM12 6h1v1H12zM14 6h7v1H14zM0 8h2v1H0zM4 8h3v1H4zM12 8h1v1H12zM15 8h1v1H15zM17 8h4v1H17zM1 9h1v1H1zM3 9h1v1H3zM7 9h1v1H7zM12 9h1v1H12zM16 9h1v1H16zM18 9h1v1H18zM2 10h5v1H2zM12 10h1v1H12zM14 10h4v1H14zM19 10h1v1H19zM1 11h2v1H1zM7 11h2v1H7zM10 11h4v1H10zM15 11h1v1H15zM20 11h1v1H20zM0 12h1v1H0zM5 12h4v1H5zM11 12h1v1H11zM13 12h1v1H13zM19 12h1v1H19zM8 13h7v1H8zM16 13h1v1H16zM19 13h1v1H19zM0 14h7v1H0zM11 14h1v1H11zM14 14h1v1H14zM16 14h2v1H16zM19 14h1v1H19zM0 15h1v1H0zM6 15h1v1H6zM8 15h3v1H8zM13 15h1v1H13zM16 15h1v1H16zM20 15h1v1H20zM0 16h1v1H0zM2 16h3v1H2zM6 16h1v1H6zM8 16h3v1H8zM12 16h2v1H12zM15 16h1v1H15zM19 16h1v1H19zM0 17h1v1H0zM2 17h3v1H2zM6 17h1v1H6zM12 17h1v1H12zM14 17h1v1H14zM16 17h1v1H16zM19 17h2v1H19zM0 18h1v1H0zM2 18h3v1H2zM6 18h1v1H6zM10 18h1v1H10zM12 18h2v1H12zM16 18h1v1H16zM0 19h1v1H0zM6 19h1v1H6zM8 19h5v1H8zM0 20h7v1H0zM8 20h4v1H8zM13 20h3v1H13zM17 20h1v1H17zM20 20h1v1H20z"/>
+                            </g>
+                            <rect x="40" y="468" width="180" height="34" rx="17" fill="var(--brand)"/>
+                            <text x="130" y="490" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#FFFFFF">Ajouter aux contacts</text>
+                        </svg>
+                    </div>
+
+                    <div class="max-w-xl">
+                        <h1 id="hero-titre" class="text-[1.75rem] font-bold leading-[1.15] tracking-tight text-slate-900 sm:text-[2.1rem] lg:text-[2rem] xl:text-[2.5rem]">
+                            Une carte de visite qui ne se perd pas
+                        </h1>
+
+                        <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                            Vos contacts scannent votre QR code et vos coordonnées s'ajoutent à leur carnet d'adresses.
+                            Le lien de votre carte, lui, se partage par message, par mail ou sur vos réseaux.
+                        </p>
+
+                        {{-- Version compacte du visuel, réservée au mobile pour garder le hero court --}}
+                        <div class="mt-6 sm:hidden">
+                            <svg viewBox="0 0 330 84" class="h-auto w-full max-w-[330px]" role="img" aria-labelledby="mini-titre">
+                                <title id="mini-titre">Aperçu d'une carte de visite numérique : logo, nom, coordonnées et QR code.</title>
+                                <rect x="1" y="1" width="328" height="82" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+                                <circle cx="42" cy="42" r="21" fill="var(--brand-soft)"/>
+                                <text x="42" y="49" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="var(--brand)">JD</text>
+                                <text x="74" y="35" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0F172A">Julie Dupont</text>
+                                <text x="74" y="52" font-family="system-ui, sans-serif" font-size="11" fill="#64748B">Dupont &amp; Fille, toiture</text>
+                                <text x="74" y="67" font-family="system-ui, sans-serif" font-size="11" fill="#64748B">+32 478 12 34 56</text>
+                                <rect x="254" y="14" width="56" height="56" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+                                <g transform="translate(260 20) scale(2.1)" fill="#0F172A" shape-rendering="crispEdges">
+                                    <path d="M0 0h7v1H0zM8 0h1v1H8zM12 0h1v1H12zM14 0h7v1H14zM0 1h1v1H0zM6 1h1v1H6zM8 1h2v1H8zM11 1h1v1H11zM14 1h1v1H14zM20 1h1v1H20zM0 2h1v1H0zM2 2h3v1H2zM6 2h1v1H6zM8 2h5v1H8zM14 2h1v1H14zM16 2h3v1H16zM20 2h1v1H20zM0 3h1v1H0zM2 3h3v1H2zM6 3h1v1H6zM8 3h1v1H8zM10 3h1v1H10zM12 3h1v1H12zM14 3h1v1H14zM16 3h3v1H16zM20 3h1v1H20zM0 4h1v1H0zM2 4h3v1H2zM6 4h1v1H6zM9 4h4v1H9zM14 4h1v1H14zM16 4h3v1H16zM20 4h1v1H20zM0 5h1v1H0zM6 5h1v1H6zM8 5h1v1H8zM10 5h1v1H10zM12 5h1v1H12zM14 5h1v1H14zM20 5h1v1H20zM0 6h7v1H0zM8 6h1v1H8zM10 6h1v1H10zM12 6h1v1H12zM14 6h7v1H14zM0 8h2v1H0zM4 8h3v1H4zM12 8h1v1H12zM15 8h1v1H15zM17 8h4v1H17zM1 9h1v1H1zM3 9h1v1H3zM7 9h1v1H7zM12 9h1v1H12zM16 9h1v1H16zM18 9h1v1H18zM2 10h5v1H2zM12 10h1v1H12zM14 10h4v1H14zM19 10h1v1H19zM1 11h2v1H1zM7 11h2v1H7zM10 11h4v1H10zM15 11h1v1H15zM20 11h1v1H20zM0 12h1v1H0zM5 12h4v1H5zM11 12h1v1H11zM13 12h1v1H13zM19 12h1v1H19zM8 13h7v1H8zM16 13h1v1H16zM19 13h1v1H19zM0 14h7v1H0zM11 14h1v1H11zM14 14h1v1H14zM16 14h2v1H16zM19 14h1v1H19zM0 15h1v1H0zM6 15h1v1H6zM8 15h3v1H8zM13 15h1v1H13zM16 15h1v1H16zM20 15h1v1H20zM0 16h1v1H0zM2 16h3v1H2zM6 16h1v1H6zM8 16h3v1H8zM12 16h2v1H12zM15 16h1v1H15zM19 16h1v1H19zM0 17h1v1H0zM2 17h3v1H2zM6 17h1v1H6zM12 17h1v1H12zM14 17h1v1H14zM16 17h1v1H16zM19 17h2v1H19zM0 18h1v1H0zM2 18h3v1H2zM6 18h1v1H6zM10 18h1v1H10zM12 18h2v1H12zM16 18h1v1H16zM0 19h1v1H0zM6 19h1v1H6zM8 19h5v1H8zM0 20h7v1H0zM8 20h4v1H8zM13 20h3v1H13zM17 20h1v1H17zM20 20h1v1H20z"/>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <div class="mt-6">
+                            <a
+                                href="#formulaire"
+                                class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--brand)] px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-[var(--brand-dark)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)] sm:w-auto"
+                            >
+                                Créer ma carte gratuite
+                                <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10.6 3.3a1 1 0 0 0-1.4 1.4l3.9 3.9H3a1 1 0 1 0 0 2h10.1l-3.9 3.9a1 1 0 1 0 1.4 1.4l5.6-5.6a1 1 0 0 0 0-1.4z"/></svg>
+                            </a>
+
+                            {{-- ▼ PHRASE DE RÉASSURANCE : à remplacer par votre formulation validée --}}
+                            <p class="mt-3 text-sm text-slate-600">
+                                Vos informations servent uniquement à créer votre carte.
+                            </p>
+                        </div>
+
+                        <ul class="mt-6 flex flex-wrap gap-2">
+                            <li class="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700">Gratuit, sans abonnement</li>
+                            <li class="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700">Sans compte ni mot de passe</li>
+                            <li class="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700">En ligne après ma validation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                {{-- ───────── Colonne formulaire ───────── --}}
+                <div id="formulaire" class="scroll-mt-6">
+                    <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
+                        <h2 class="text-lg font-semibold text-slate-900">Créer ma carte</h2>
+                        <p class="mt-1 text-sm text-slate-600">Entreprise, contact, réseaux sociaux, logo, couleur.</p>
+
+                        {{-- ▼ EMPLACEMENT DU FORMULAIRE : remplacez tout ce bloc par @include('carte.partials.formulaire') --}}
+                        <div class="mt-6 space-y-4" aria-hidden="true">
+                            <div class="space-y-1.5">
+                                <div class="h-3 w-24 rounded bg-slate-200"></div>
+                                <div class="h-11 rounded-lg border border-slate-200 bg-slate-50"></div>
+                            </div>
+                            <div class="space-y-1.5">
+                                <div class="h-3 w-20 rounded bg-slate-200"></div>
+                                <div class="h-11 rounded-lg border border-slate-200 bg-slate-50"></div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="space-y-1.5">
+                                    <div class="h-3 w-16 rounded bg-slate-200"></div>
+                                    <div class="h-11 rounded-lg border border-slate-200 bg-slate-50"></div>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <div class="h-3 w-16 rounded bg-slate-200"></div>
+                                    <div class="h-11 rounded-lg border border-slate-200 bg-slate-50"></div>
+                                </div>
+                            </div>
+                            <div class="h-11 rounded-lg bg-[var(--brand)] opacity-90"></div>
+                        </div>
+                        {{-- ▲ FIN DE L'EMPLACEMENT --}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {{-- ═══════════════════════════════════════════════════════════════════════
+     Hero, variante 3 : « le lien à partager »
+     Promesse sur un panneau de couleur, formulaire sur fond blanc à côté.
+     Tailwind CSS 4. Aucune dépendance externe, aucun JavaScript.
+     ═══════════════════════════════════════════════════════════════════════ --}}
+
+    <section
+        class="relative bg-white"
+        style="--brand:#1732AB; --brand-dark:#122885; --brand-soft:#E7EBF8;"
+        aria-labelledby="hero-titre"
+    >
+        <div class="mx-auto max-w-6xl px-5 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-14">
+            <div class="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_330px] lg:gap-10 xl:grid-cols-[minmax(0,1fr)_390px]">
+
+                {{-- ───────── Panneau promesse ───────── --}}
+                <div class="relative rounded-3xl bg-[var(--brand)] px-5 py-8 sm:px-9 sm:py-10 md:pr-[200px] lg:pr-[175px] xl:pr-[245px]">
+
+                    <p class="text-sm font-medium text-[#C3CEEF]">Carte de visite numérique, gratuite</p>
+
+                    <h1 id="hero-titre" class="mt-3 text-[1.75rem] font-bold leading-[1.15] tracking-tight text-white sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.6rem]">
+                        Partagez vos coordonnées en un lien, sans carton ni appli
+                    </h1>
+
+                    <p class="mt-4 max-w-lg text-base leading-relaxed text-[#DCE3F7] sm:text-lg">
+                        Une page web à votre nom, avec votre logo, vos réseaux, un QR code à faire scanner et un
+                        bouton qui ajoute vos coordonnées au carnet d'adresses.
+                    </p>
+
+                    {{-- Version compacte du visuel, réservée au mobile pour garder le hero court --}}
+                    <div class="mt-6 md:hidden">
+                        <svg viewBox="0 0 330 84" class="h-auto w-full max-w-[330px]" role="img" aria-labelledby="mini-titre">
+                            <title id="mini-titre">Aperçu d'une carte de visite numérique : logo, nom, coordonnées et QR code.</title>
+                            <rect x="1" y="1" width="328" height="82" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+                            <circle cx="42" cy="42" r="21" fill="var(--brand-soft)"/>
+                            <text x="42" y="49" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="var(--brand)">JD</text>
+                            <text x="74" y="35" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0F172A">Julie Dupont</text>
+                            <text x="74" y="52" font-family="system-ui, sans-serif" font-size="11" fill="#64748B">Dupont &amp; Fille, toiture</text>
+                            <text x="74" y="67" font-family="system-ui, sans-serif" font-size="11" fill="#64748B">+32 478 12 34 56</text>
+                            <rect x="254" y="14" width="56" height="56" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+                            <g transform="translate(260 20) scale(2.1)" fill="#0F172A" shape-rendering="crispEdges">
+                                <path d="M0 0h7v1H0zM8 0h1v1H8zM12 0h1v1H12zM14 0h7v1H14zM0 1h1v1H0zM6 1h1v1H6zM8 1h2v1H8zM11 1h1v1H11zM14 1h1v1H14zM20 1h1v1H20zM0 2h1v1H0zM2 2h3v1H2zM6 2h1v1H6zM8 2h5v1H8zM14 2h1v1H14zM16 2h3v1H16zM20 2h1v1H20zM0 3h1v1H0zM2 3h3v1H2zM6 3h1v1H6zM8 3h1v1H8zM10 3h1v1H10zM12 3h1v1H12zM14 3h1v1H14zM16 3h3v1H16zM20 3h1v1H20zM0 4h1v1H0zM2 4h3v1H2zM6 4h1v1H6zM9 4h4v1H9zM14 4h1v1H14zM16 4h3v1H16zM20 4h1v1H20zM0 5h1v1H0zM6 5h1v1H6zM8 5h1v1H8zM10 5h1v1H10zM12 5h1v1H12zM14 5h1v1H14zM20 5h1v1H20zM0 6h7v1H0zM8 6h1v1H8zM10 6h1v1H10zM12 6h1v1H12zM14 6h7v1H14zM0 8h2v1H0zM4 8h3v1H4zM12 8h1v1H12zM15 8h1v1H15zM17 8h4v1H17zM1 9h1v1H1zM3 9h1v1H3zM7 9h1v1H7zM12 9h1v1H12zM16 9h1v1H16zM18 9h1v1H18zM2 10h5v1H2zM12 10h1v1H12zM14 10h4v1H14zM19 10h1v1H19zM1 11h2v1H1zM7 11h2v1H7zM10 11h4v1H10zM15 11h1v1H15zM20 11h1v1H20zM0 12h1v1H0zM5 12h4v1H5zM11 12h1v1H11zM13 12h1v1H13zM19 12h1v1H19zM8 13h7v1H8zM16 13h1v1H16zM19 13h1v1H19zM0 14h7v1H0zM11 14h1v1H11zM14 14h1v1H14zM16 14h2v1H16zM19 14h1v1H19zM0 15h1v1H0zM6 15h1v1H6zM8 15h3v1H8zM13 15h1v1H13zM16 15h1v1H16zM20 15h1v1H20zM0 16h1v1H0zM2 16h3v1H2zM6 16h1v1H6zM8 16h3v1H8zM12 16h2v1H12zM15 16h1v1H15zM19 16h1v1H19zM0 17h1v1H0zM2 17h3v1H2zM6 17h1v1H6zM12 17h1v1H12zM14 17h1v1H14zM16 17h1v1H16zM19 17h2v1H19zM0 18h1v1H0zM2 18h3v1H2zM6 18h1v1H6zM10 18h1v1H10zM12 18h2v1H12zM16 18h1v1H16zM0 19h1v1H0zM6 19h1v1H6zM8 19h5v1H8zM0 20h7v1H0zM8 20h4v1H8zM13 20h3v1H13zM17 20h1v1H17zM20 20h1v1H20z"/>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <ul class="mt-6 flex flex-col gap-2 text-sm text-[#DCE3F7] sm:flex-row sm:flex-wrap sm:gap-x-6 sm:text-base">
+                        <li class="flex items-center gap-2">
+                            <svg class="h-4 w-4 shrink-0 text-white" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z"/></svg>
+                            Gratuit, sans abonnement
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="h-4 w-4 shrink-0 text-white" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z"/></svg>
+                            Sans compte ni mot de passe
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="h-4 w-4 shrink-0 text-white" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z"/></svg>
+                            En ligne après ma validation
+                        </li>
+                    </ul>
+
+                    <div class="mt-7">
+                        <a
+                            href="#formulaire"
+                            class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-base font-semibold text-[var(--brand)] transition-colors hover:bg-[var(--brand-soft)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto"
+                        >
+                            Créer ma carte gratuite
+                            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10.6 3.3a1 1 0 0 0-1.4 1.4l3.9 3.9H3a1 1 0 1 0 0 2h10.1l-3.9 3.9a1 1 0 1 0 1.4 1.4l5.6-5.6a1 1 0 0 0 0-1.4z"/></svg>
+                        </a>
+
+                        {{-- ▼ PHRASE DE RÉASSURANCE : à remplacer par votre formulation validée --}}
+                        <p class="mt-3 text-sm text-[#C3CEEF]">
+                            Vos informations servent uniquement à créer votre carte.
+                        </p>
+                    </div>
+
+                    {{-- Aperçu : dépasse du panneau à partir de 768 px --}}
+                    <div class="absolute right-5 top-1/2 hidden -translate-y-1/2 md:block lg:right-4 xl:right-6">
+                        <svg viewBox="0 0 260 520" class="h-auto w-[150px] drop-shadow-2xl lg:w-[145px] xl:w-[205px]" role="img" aria-labelledby="apercu-titre">
+                            <title id="apercu-titre">Aperçu d'une carte de visite numérique sur un téléphone : logo, nom, coordonnées, boutons de réseaux sociaux, QR code et bouton d'ajout aux contacts.</title>
+                            <rect x="0" y="0" width="260" height="520" rx="34" fill="#0F172A"/>
+                            <rect x="8" y="8" width="244" height="504" rx="28" fill="#FFFFFF"/>
+                            <rect x="8" y="8" width="244" height="120" rx="28" fill="var(--brand)"/>
+                            <rect x="8" y="100" width="244" height="28" fill="var(--brand)"/>
+                            <rect x="98" y="16" width="64" height="9" rx="4.5" fill="#0F172A" opacity=".45"/>
+                            <circle cx="130" cy="116" r="31" fill="#FFFFFF"/>
+                            <circle cx="130" cy="116" r="31" fill="none" stroke="#E2E8F0" stroke-width="1.5"/>
+                            <text x="130" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="var(--brand)">JD</text>
+                            <text x="130" y="176" text-anchor="middle" font-family="system-ui, sans-serif" font-size="17" font-weight="700" fill="#0F172A">Julie Dupont</text>
+                            <text x="130" y="195" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#64748B">Dupont &amp; Fille, toiture</text>
+                            <rect x="34" y="216" width="22" height="22" rx="7" fill="var(--brand-soft)"/>
+                            <path d="M41 222.5c0-.8.7-1.5 1.5-1.5h1.6c.6 0 1.2.4 1.4 1l.5 1.6c.2.5 0 1.1-.4 1.4l-.8.6c.6 1.3 1.6 2.3 2.9 2.9l.6-.8c.3-.4.9-.6 1.4-.4l1.6.5c.6.2 1 .8 1 1.4v1.6c0 .8-.7 1.5-1.5 1.5-5.4 0-9.8-4.4-9.8-9.8z" fill="var(--brand)"/>
+                            <text x="64" y="232" font-family="system-ui, sans-serif" font-size="12" fill="#334155">+32 478 12 34 56</text>
+                            <rect x="34" y="248" width="22" height="22" rx="7" fill="var(--brand-soft)"/>
+                            <path d="M41 255.5c0-.8.7-1.5 1.5-1.5h11c.8 0 1.5.7 1.5 1.5v9c0 .8-.7 1.5-1.5 1.5h-11c-.8 0-1.5-.7-1.5-1.5zm2 .5 5.5 3.8 5.5-3.8z" fill="var(--brand)"/>
+                            <text x="64" y="264" font-family="system-ui, sans-serif" font-size="12" fill="#334155">julie@dupont-toiture.be</text>
+                            <g>
+                                <rect x="64" y="288" width="36" height="36" rx="12" fill="#F1F5F9"/>
+                                <path d="M76 306a4 4 0 0 1 4-4h2v2.4h-2a1.6 1.6 0 0 0 0 3.2h2V310h-2a4 4 0 0 1-4-4zm12 0a4 4 0 0 0-4-4h-2v2.4h2a1.6 1.6 0 0 1 0 3.2h-2V310h2a4 4 0 0 0 4-4zm-9 0h6v2h-6z" fill="#475569"/>
+                                <rect x="112" y="288" width="36" height="36" rx="12" fill="#F1F5F9"/>
+                                <circle cx="130" cy="306" r="8" fill="none" stroke="#475569" stroke-width="1.8"/>
+                                <path d="M122 306h16M130 298c2.4 2.4 2.4 13.6 0 16M130 298c-2.4 2.4-2.4 13.6 0 16" fill="none" stroke="#475569" stroke-width="1.8"/>
+                                <rect x="160" y="288" width="36" height="36" rx="12" fill="#F1F5F9"/>
+                                <path d="M170 301.5c0-.8.7-1.5 1.5-1.5h13c.8 0 1.5.7 1.5 1.5v8c0 .8-.7 1.5-1.5 1.5H178l-4.5 3.5V311h-2a1.5 1.5 0 0 1-1.5-1.5z" fill="#475569"/>
+                            </g>
+                            <rect x="74" y="340" width="112" height="112" rx="14" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+                            <g transform="translate(86 352) scale(4.19)" fill="#0F172A" shape-rendering="crispEdges">
+                                <path d="M0 0h7v1H0zM8 0h1v1H8zM12 0h1v1H12zM14 0h7v1H14zM0 1h1v1H0zM6 1h1v1H6zM8 1h2v1H8zM11 1h1v1H11zM14 1h1v1H14zM20 1h1v1H20zM0 2h1v1H0zM2 2h3v1H2zM6 2h1v1H6zM8 2h5v1H8zM14 2h1v1H14zM16 2h3v1H16zM20 2h1v1H20zM0 3h1v1H0zM2 3h3v1H2zM6 3h1v1H6zM8 3h1v1H8zM10 3h1v1H10zM12 3h1v1H12zM14 3h1v1H14zM16 3h3v1H16zM20 3h1v1H20zM0 4h1v1H0zM2 4h3v1H2zM6 4h1v1H6zM9 4h4v1H9zM14 4h1v1H14zM16 4h3v1H16zM20 4h1v1H20zM0 5h1v1H0zM6 5h1v1H6zM8 5h1v1H8zM10 5h1v1H10zM12 5h1v1H12zM14 5h1v1H14zM20 5h1v1H20zM0 6h7v1H0zM8 6h1v1H8zM10 6h1v1H10zM12 6h1v1H12zM14 6h7v1H14zM0 8h2v1H0zM4 8h3v1H4zM12 8h1v1H12zM15 8h1v1H15zM17 8h4v1H17zM1 9h1v1H1zM3 9h1v1H3zM7 9h1v1H7zM12 9h1v1H12zM16 9h1v1H16zM18 9h1v1H18zM2 10h5v1H2zM12 10h1v1H12zM14 10h4v1H14zM19 10h1v1H19zM1 11h2v1H1zM7 11h2v1H7zM10 11h4v1H10zM15 11h1v1H15zM20 11h1v1H20zM0 12h1v1H0zM5 12h4v1H5zM11 12h1v1H11zM13 12h1v1H13zM19 12h1v1H19zM8 13h7v1H8zM16 13h1v1H16zM19 13h1v1H19zM0 14h7v1H0zM11 14h1v1H11zM14 14h1v1H14zM16 14h2v1H16zM19 14h1v1H19zM0 15h1v1H0zM6 15h1v1H6zM8 15h3v1H8zM13 15h1v1H13zM16 15h1v1H16zM20 15h1v1H20zM0 16h1v1H0zM2 16h3v1H2zM6 16h1v1H6zM8 16h3v1H8zM12 16h2v1H12zM15 16h1v1H15zM19 16h1v1H19zM0 17h1v1H0zM2 17h3v1H2zM6 17h1v1H6zM12 17h1v1H12zM14 17h1v1H14zM16 17h1v1H16zM19 17h2v1H19zM0 18h1v1H0zM2 18h3v1H2zM6 18h1v1H6zM10 18h1v1H10zM12 18h2v1H12zM16 18h1v1H16zM0 19h1v1H0zM6 19h1v1H6zM8 19h5v1H8zM0 20h7v1H0zM8 20h4v1H8zM13 20h3v1H13zM17 20h1v1H17zM20 20h1v1H20z"/>
+                            </g>
+                            <rect x="40" y="468" width="180" height="34" rx="17" fill="var(--brand)"/>
+                            <text x="130" y="490" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#FFFFFF">Ajouter aux contacts</text>
+                        </svg>
+                    </div>
+                </div>
+
+                {{-- ───────── Colonne formulaire ───────── --}}
+                <div id="formulaire" class="scroll-mt-6">
+                    <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
+                        <h2 class="text-lg font-semibold text-slate-900">Créer ma carte</h2>
+                        <p class="mt-1 text-sm text-slate-600">Entreprise, contact, réseaux sociaux, logo, couleur.</p>
+
+                        {{-- ▼ EMPLACEMENT DU FORMULAIRE : remplacez tout ce bloc par @include('carte.partials.formulaire') --}}
+                        <div class="mt-6 space-y-4" aria-hidden="true">
+                            <div class="space-y-1.5">
+                                <div class="h-3 w-24 rounded bg-slate-200"></div>
+                                <div class="h-11 rounded-lg border border-slate-200 bg-slate-50"></div>
+                            </div>
+                            <div class="space-y-1.5">
+                                <div class="h-3 w-20 rounded bg-slate-200"></div>
+                                <div class="h-11 rounded-lg border border-slate-200 bg-slate-50"></div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="space-y-1.5">
+                                    <div class="h-3 w-16 rounded bg-slate-200"></div>
+                                    <div class="h-11 rounded-lg border border-slate-200 bg-slate-50"></div>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <div class="h-3 w-16 rounded bg-slate-200"></div>
+                                    <div class="h-11 rounded-lg border border-slate-200 bg-slate-50"></div>
+                                </div>
+                            </div>
+                            <div class="h-11 rounded-lg bg-[var(--brand)] opacity-90"></div>
+                        </div>
+                        {{-- ▲ FIN DE L'EMPLACEMENT --}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
     </body>
 </html>
