@@ -20,5 +20,5 @@ Route::post('/admin/carte/{businessCard}/update', [AdminBusinessCardController::
 Route::post('/admin/carte/{businessCard}/approve', [AdminBusinessCardController::class, 'approve'])->name('admin.cards.approve')->middleware('auth');
 
 //  Create card
-Route::get('/creer-ma-carte', [BusinessCardController::class, 'create'])->name('business-card.create');
+Route::get('/', [BusinessCardController::class, 'create'])->name('business-card.create');
 Route::post('/creer-ma-carte', [BusinessCardController::class, 'store'])->name('business-card.store');
