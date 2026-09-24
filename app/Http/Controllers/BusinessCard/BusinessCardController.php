@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\BusinessCard;
 
+use App\Actions\Emails\SendConfirmationUserAction;
 use App\Enums\SocialMedia;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessCardStoreRequest;
 use App\Models\BusinessCard;
+use App\Services\SendConfirmationEmailService;
 
 class BusinessCardController extends Controller
 {
@@ -16,7 +18,8 @@ class BusinessCardController extends Controller
         ]);
     }
 
-    public function store(BusinessCardStoreRequest $request)
+    public function store(BusinessCardStoreRequest $request,
+                          SendConfirmationEmailService $sendConfirmationEmailService)
     {
         $data = $request->validated();
 
@@ -25,7 +28,9 @@ class BusinessCardController extends Controller
                 ->store('logos', 'public');
         }
 
-        BusinessCard::create($data);
+        $businessCard = BusinessCard::create($data);
+
+        $sendConfirmationEmailService->send($businessCard);
 
         return view('business-card.confirmation')->with('success', 'merci, en attente de validation');
     }
