@@ -29,6 +29,7 @@ class ConfirmationUserEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            from: config('app.admin_email'),
             subject: 'Confirmation de la soumission de votre carte de visite',
         );
     }

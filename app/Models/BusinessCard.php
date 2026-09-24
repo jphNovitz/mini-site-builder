@@ -46,4 +46,5 @@ class BusinessCard extends Model
     {
         return 'slug';
     }
+
 }

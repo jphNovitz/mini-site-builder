@@ -11,7 +11,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ConfirmationAdminEmail extends Mailable
+class PublishNotificationUserEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,7 +30,7 @@ class ConfirmationAdminEmail extends Mailable
     {
         return new Envelope(
             from: config('app.admin_email'),
-            subject: 'Confirmation Admin Email',
+            subject: 'Votre carte de visite est en ligne !',
         );
     }
 
@@ -40,7 +40,7 @@ class ConfirmationAdminEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.confirmation-admin',
+            view: 'emails.publish-notification-user',
         );
     }
 

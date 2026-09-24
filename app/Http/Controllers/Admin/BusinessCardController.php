@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Contracts\PublishSiteContract;
+use App\Contracts\SendApprovalNotificationEmailContract;
 use App\Enums\CardStatus;
 use App\Enums\SocialMedia;
 use App\Http\Controllers\Controller;
@@ -50,11 +51,13 @@ class BusinessCardController extends Controller
 
     }
 
-    public function approve(BusinessCard $businessCard, PublishSiteContract $publishSite, Request $request)
+    public function approve(BusinessCard $businessCard, PublishSiteContract $publishSite, SendApprovalNotificationEmailContract $sendApprovalNotificationEmail, Request $request)
     {
         $publishSite->create($businessCard);
         $businessCard->status = 'published';
         $businessCard->save();
+
+        $sendApprovalNotificationEmail->send($businessCard);
 
         return redirect()->route('admin.cards.index')->with('success', 'Carte approuvée avec succès.');
     }

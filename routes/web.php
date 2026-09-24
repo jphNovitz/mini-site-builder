@@ -23,6 +23,7 @@ Route::post('/admin/carte/{businessCard}/approve', [AdminBusinessCardController:
 Route::get('/', [BusinessCardController::class, 'create'])->name('business-card.create');
 Route::post('/creer-ma-carte', [BusinessCardController::class, 'store'])->name('business-card.store');
 
+
 //  Pages légales (contenu provisoire, à valider)
 Route::view('/mentions-legales', 'legal.mentions-legales')->name('legal.mentions-legales');
 Route::view('/vie-privee', 'legal.vie-privee')->name('legal.vie-privee');
