@@ -18,7 +18,7 @@ class PublishNotificationUserEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public BusinessCard $businessCard)
+    public function __construct(public BusinessCard $businessCard, public array $fileDatas)
     {
         //
     }
@@ -51,6 +51,11 @@ class PublishNotificationUserEmail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            Attachment::fromPath($this->fileDatas['path'])
+                ->as($this->fileDatas['name'])
+                ->withMime('application/zip'),
+        ];
     }
+
 }
