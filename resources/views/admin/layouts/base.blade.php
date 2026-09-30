@@ -28,6 +28,13 @@
         </div>
 
     </nav>
+
+    @if(session('success'))
+        <div class="bg-green-100 text-green-800 p-3 rounded-md mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
+
     @yield('content')
 </main>
 

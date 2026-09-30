@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Contracts\PublishSiteContract;
 use App\Contracts\SendApprovalNotificationEmailContract;
 use App\Enums\CardStatus;
-use App\Enums\SocialMedia;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessCardStoreRequest;
 use App\Models\BusinessCard;
@@ -31,7 +30,6 @@ class BusinessCardController extends Controller
     {
         return view('admin.business-card.edit', [
             'businessCard' => $businessCard,
-            'socialNetworks' => SocialMedia::cases(),
         ]);
     }
     public function update(BusinessCard $businessCard, PublishSiteContract $publishSite, BusinessCardStoreRequest $request)

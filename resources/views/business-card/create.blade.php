@@ -10,7 +10,7 @@
         <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
             <h2 class="text-xl font-bold text-slate-900">Créer ma carte</h2>
             <p class="mt-1 text-sm text-slate-600">Entreprise, contact, réseaux sociaux, logo, couleur.</p>
-            <x-form.input :socialNetworks="$socialNetworks" submit_label="Créer ma carte"/>
+            <x-form.input :socialNetworks="$socialNetworks"  :action="route('business-card.store')" submit_label="Créer ma carte"/>
         </div>
 
     </div>
