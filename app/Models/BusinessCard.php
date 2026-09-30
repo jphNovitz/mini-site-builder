@@ -6,11 +6,14 @@ use App\Enums\CardStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Prunable;
 
 class BusinessCard extends Model
 {
     /** @use HasFactory<\Database\Factories\BusinessCardFactory> */
     use HasFactory;
+    use Prunable;
 
     public const DEFAULT_ACCENT = '#2563eb';
     protected $fillable = [
@@ -45,6 +48,18 @@ class BusinessCard extends Model
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    public function prunable()
+    {
+        return static::where('status', CardStatus::Pending)->where('created_at', '<', now()->subDays(30));
+    }
+
+    protected function pruning()
+    {
+        if ($this->logo_path) {
+            Storage::disk('public')->delete($this->logo_path);
+        }
     }
 
 }
