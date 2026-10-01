@@ -31,10 +31,11 @@ class BusinessCardStoreRequest extends FormRequest
             'address' => 'nullable|string|max:255',
             'phone_number' => 'string|max:255',
             'email'        => 'required|nullable|email',
-            'website'      => 'nullable|url|max:255',
+            'website'      => 'required_if:qr_target,website|nullable|url|max:255',
             'social_media_links' => 'nullable|array',
             'social_media_links.*' => 'nullable|url|max:255',
             'accent_color' => 'nullable|string|max:7|regex:/^#[0-9a-fA-F]{6}$/',
+            'qr_target' => 'required|in:vcard,website',
         ];
     }
 

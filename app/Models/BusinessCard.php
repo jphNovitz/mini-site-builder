@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\CardStatus;
+use App\Enums\QrTarget;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -19,12 +20,13 @@ class BusinessCard extends Model
     protected $fillable = [
         'company_name','logo_path','tagline','vat_number','company_number',
         'address','phone_number','email','website','social_media_links',
-        'accent_color','slug','status'];
+        'accent_color','slug','status', 'qr_target'];
 
     protected function casts(): array
     {
         return [
             'status' => CardStatus::class,
+            'qr_target' => QrTarget::class,
             'social_media_links' => 'array',
             ];
     }

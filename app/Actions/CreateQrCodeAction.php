@@ -11,14 +11,14 @@ use BaconQrCode\Writer;
 class CreateQrCodeAction
 {
 
-    public function execute(string $vcard)
+    public function execute(string $target)
     {
         $renderer = new ImageRenderer(
             new RendererStyle(400),
             new SvgImageBackEnd()
         );
         $writer = new Writer($renderer);
-        $qrCode = $writer->writeString($vcard, 'UTF-8', ErrorCorrectionLevel::M());
+        $qrCode = $writer->writeString($target, 'UTF-8', ErrorCorrectionLevel::M());
 
         return preg_replace('/^<\?xml[^>]*\?>\s*/', '', $qrCode);
 

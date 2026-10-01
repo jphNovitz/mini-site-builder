@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\File;
 class CreateVcardAction
 {
 
-    public function execute(BusinessCard $businessCard, string $directory)
+    public function execute(BusinessCard $businessCard, string $directory): string
     {
         $content = $this->buildVCardContent($businessCard);
         File::put($directory.'/contact.vcf', $content);

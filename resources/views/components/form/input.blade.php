@@ -135,6 +135,17 @@
 
             </div>
         @endforeach
+        <h3 class="w-full text-lg font-semibold">Action du QR Code</h3>
+        <div class="flex  gap-4 my-2">
+            <input type="radio" id="qr_target_vcard" name="qr_target" value="vcard" checked>
+            <label for="qr_target_vcard">Vcard</label><br>
+            <input type="radio" id="qr_target_website" name="qr_target" value="website">
+            <label for="qr_target_website">Site internet</label><br>
+            @error('qr_target')
+            <span class="text-red-600 font-semibold"> {{$message}}</span>
+            @enderror
+        </div>
+
         <input type="submit" value="{{$submitLabel }}"
                class="w-auto bg-brand-dark text-brand-soft py-2 px-4 rounded-md hover:bg-brand w-fit">
         <p>Les infos seront publiées sur la carte</p>
