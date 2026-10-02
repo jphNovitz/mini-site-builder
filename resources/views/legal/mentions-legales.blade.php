@@ -2,8 +2,8 @@
 @section('title', 'Mentions légales')
 @section('description', 'Mentions légales du site.')
 @section('content')
-    {{-- Contenu provisoire (lorem ipsum), à remplacer par le texte définitif validé --}}
     <div class="mx-auto max-w-3xl">
+        <span class="text-sm py-2"><a href="{{route('business-card.create')}}"><< Retour</a></span>
         <h1 class="text-2xl font-bold text-slate-900">Mentions légales</h1>
 
         <section class="mt-8">

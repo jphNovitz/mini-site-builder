@@ -26,6 +26,7 @@ Route::post('/creer-ma-carte', [BusinessCardController::class, 'store'])->name('
 
 //  Pages légales (contenu provisoire, à valider)
 Route::view('/mentions-legales', 'legal.mentions-legales')->name('legal.mentions-legales');
-Route::view('/vie-privee', 'legal.vie-privee')->name('legal.vie-privee');
+Route::view('/politique-confidentialite', 'legal.politique-confidentialite')->name('legal.politique-confidentialite');
+Route::view('/conditions-utilisation', 'legal.conditions')->name('legal.conditions');
 
 

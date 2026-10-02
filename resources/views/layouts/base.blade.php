@@ -36,7 +36,7 @@
 
             {{-- Qui propose l'outil : c'est là que se fait le lien vers vos services --}}
             <div class="max-w-sm">
-                <p class="text-base font-semibold text-slate-900">jphiweb</p>
+                <p class="text-base font-semibold text-slate-900"><a href="https://jphiweb.be">jphiweb</a></p>
                 <p class="mt-1.5 text-sm leading-relaxed text-slate-600">
                     Un outil gratuit proposé par jphiweb, création de sites web pour les indépendants et
                     les PME en Brabant wallon.
@@ -57,15 +57,21 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('/vie-privee') }}"
+                        <a href="{{ url('/politique-confidentialite') }}"
                            class="text-slate-600 underline-offset-2 hover:text-[var(--brand)] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)]">
-                            Vie privée et données
+                            Politique de confidentialité
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/conditions-utilisation') }}"
+                           class="text-slate-600 underline-offset-2 hover:text-[var(--brand)] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)]">
+                            Conditions d'utilisation
                         </a>
                     </li>
                     <li>
                         <a href="mailto:bonjour@jphiweb.be"
                            class="text-slate-600 underline-offset-2 hover:text-[var(--brand)] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)]">
-                            Une question ? bonjour@jphiweb.be
+                            Une question ? <a href="mailto:bonjour@jphiweb.be">bonjour@jphiweb.be</a> ou <a href="https://jphiweb.be/contact">formulaire de contact</a>
                         </a>
                     </li>
                 </ul>
