@@ -36,6 +36,7 @@ class BusinessCardStoreRequest extends FormRequest
             'social_media_links.*' => 'nullable|url|max:255',
             'accent_color' => 'nullable|string|max:7|regex:/^#[0-9a-fA-F]{6}$/',
             'qr_target' => 'required|in:vcard,website',
+            'consent' => auth()->check() ? ['nullable'] : ['required', 'accepted'],
         ];
     }
 

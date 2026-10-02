@@ -18,9 +18,9 @@ class BusinessCard extends Model
 
     public const DEFAULT_ACCENT = '#2563eb';
     protected $fillable = [
-        'company_name','logo_path','tagline','vat_number','company_number',
-        'address','phone_number','email','website','social_media_links',
-        'accent_color','slug','status', 'qr_target'];
+        'company_name', 'logo_path', 'tagline', 'vat_number', 'company_number',
+        'address', 'phone_number', 'email', 'website', 'social_media_links',
+        'accent_color', 'slug', 'status', 'qr_target', 'consent', 'consent_at'];
 
     protected function casts(): array
     {
@@ -28,15 +28,19 @@ class BusinessCard extends Model
             'status' => CardStatus::class,
             'qr_target' => QrTarget::class,
             'social_media_links' => 'array',
-            ];
+        ];
     }
 
     protected static function booted()
     {
         static::creating(function ($businessCard) {
             $businessCard->slug = static::createUniqueSlug($businessCard->company_name);
+            if ($businessCard->consent) {
+                $businessCard->consent_at = now();
+            }
         });
     }
+
     protected static function createUniqueSlug($companyName)
     {
         $slug = Str::slug($companyName);
@@ -47,10 +51,12 @@ class BusinessCard extends Model
         }
         return $slug;
     }
+
     public function getRouteKeyName(): string
     {
         return 'slug';
     }
+
 
     public function prunable()
     {
@@ -63,5 +69,6 @@ class BusinessCard extends Model
             Storage::disk('public')->delete($this->logo_path);
         }
     }
+
 
 }

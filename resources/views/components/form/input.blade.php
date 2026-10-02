@@ -108,7 +108,8 @@
 
                         <img src="{{\Illuminate\Support\Facades\Storage::url($businessCard->logo_path)}}"
                              alt="logo"
-                            class="w-18">@endif </div>
+                             class="w-18">
+                    @endif </div>
                 <div class="flex flex-col gap-4 my-2">
                     <label for="logo" class="w-full">Logo</label>
                     <input type="file" id="logo" name="logo" placeholder="Votre logo" accept="image/*"
@@ -146,8 +147,18 @@
             @enderror
         </div>
 
+        @guest
+            <input type="checkbox" id="consent" name="consent" required>
+            <label for="consent">J'accepte que ces informations soient publiées publiquement sur ma carte de visite.
+                (voir les
+                <a href="#"> condition d'utilisation</a>)</label>
+            @error('consent')
+            <span class="text-red-600 font-semibold"> {{$message}}</span>
+            @enderror
+        @endguest
         <input type="submit" value="{{$submitLabel }}"
                class="w-auto bg-brand-dark text-brand-soft py-2 px-4 rounded-md hover:bg-brand w-fit">
+
         <p>Les infos seront publiées sur la carte</p>
     </article>
 </form>
