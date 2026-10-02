@@ -27,7 +27,7 @@ class BusinessCardController extends Controller
             $data['logo_path'] = $request->file('logo')
                 ->store('logos', 'public');
         }
-        
+
 
         $businessCard = BusinessCard::create($data);
 

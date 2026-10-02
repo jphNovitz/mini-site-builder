@@ -20,7 +20,7 @@ class BusinessCard extends Model
     protected $fillable = [
         'company_name', 'logo_path', 'tagline', 'vat_number', 'company_number',
         'address', 'phone_number', 'email', 'website', 'social_media_links',
-        'accent_color', 'slug', 'status', 'qr_target', 'consent', 'consent_at'];
+        'accent_color', 'slug', 'status', 'qr_target', 'consent', 'consent_at', 'marketing_consent', 'marketing_consent_at'];
 
     protected function casts(): array
     {
@@ -28,6 +28,8 @@ class BusinessCard extends Model
             'status' => CardStatus::class,
             'qr_target' => QrTarget::class,
             'social_media_links' => 'array',
+            'consent' => 'boolean',
+            'marketing_consent' => 'boolean',
         ];
     }
 
@@ -37,6 +39,9 @@ class BusinessCard extends Model
             $businessCard->slug = static::createUniqueSlug($businessCard->company_name);
             if ($businessCard->consent) {
                 $businessCard->consent_at = now();
+            }
+            if ($businessCard->marketing_consent) {
+                $businessCard->marketing_consent_at = now();
             }
         });
     }

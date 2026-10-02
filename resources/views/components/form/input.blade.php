@@ -148,13 +148,20 @@
         </div>
 
         @guest
-            <input type="checkbox" id="consent" name="consent" required>
-            <label for="consent">J'accepte que ces informations soient publiées publiquement sur ma carte de visite.
-                (voir les
-                <a href="#"> condition d'utilisation</a>)</label>
-            @error('consent')
-            <span class="text-red-600 font-semibold"> {{$message}}</span>
-            @enderror
+            <div class="flex justify-start gap-2 my-2">
+                <input type="checkbox" id="consent" name="consent" required>
+                <label for="consent" class="text-sm">J’accepte que les informations renseignées dans ce formulaire soient publiées publiquement sur ma carte de visite numérique, accessible sur Internet.</label>
+                @error('consent')
+                <span class="text-red-600 font-semibold"> {{$message}}</span>
+                @enderror
+            </div>
+            <div class="flex justify-start gap-2 my-2">
+                <input type="checkbox" id="marketing_consent" name="marketing_consent">
+                <label for="marketing_consent" class="text-sm">J’accepte de recevoir occasionnellement par e-mail des informations et offres concernant les services de JPHIWEB.</label>
+                @error('marketing_consent')
+                <span class="text-red-600 font-semibold"> {{$message}}</span>
+                @enderror
+            </div>
         @endguest
         <input type="submit" value="{{$submitLabel }}"
                class="w-auto bg-brand-dark text-brand-soft py-2 px-4 rounded-md hover:bg-brand w-fit">
