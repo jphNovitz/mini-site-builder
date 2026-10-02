@@ -69,10 +69,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="mailto:bonjour@jphiweb.be"
-                           class="text-slate-600 underline-offset-2 hover:text-[var(--brand)] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)]">
-                            Une question ? <a href="mailto:bonjour@jphiweb.be">bonjour@jphiweb.be</a> ou <a href="https://jphiweb.be/contact">formulaire de contact</a>
-                        </a>
+                        <span class="text-slate-600">
+                            Une question ?
+                            <a href="mailto:bonjour@jphiweb.be"
+                               class="font-medium text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)]">bonjour@jphiweb.be</a>
+                            ou
+                            <a href="https://jphiweb.be/contact"
+                               class="font-medium text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)]">formulaire de contact</a>
+                        </span>
                     </li>
                 </ul>
             </nav>

@@ -1,4 +1,3 @@
-```blade
 @extends('layouts.base')
 
 @section('title', 'Politique de confidentialité')
