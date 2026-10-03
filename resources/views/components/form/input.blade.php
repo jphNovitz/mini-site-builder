@@ -21,6 +21,28 @@
             <span class="text-red-600 font-semibold"> {{$message}}</span>
             @enderror
         </div>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div class="flex flex-col gap-4 my-2">
+                <label for="first_name" class="w-full">Prénom du contact</label>
+                <input type="text" id="first_name" name="first_name"
+                       value="{{old('first_name', $businessCard->first_name)}}"
+                       placeholder="Prénom" autocomplete="given-name"
+                       class="w-full p-2 border border-gray-200">
+                @error('first_name')
+                <span class="text-red-600 font-semibold"> {{$message}}</span>
+                @enderror
+            </div>
+            <div class="flex flex-col gap-4 my-2">
+                <label for="last_name" class="w-full">Nom du contact</label>
+                <input type="text" id="last_name" name="last_name"
+                       value="{{old('last_name', $businessCard->last_name)}}"
+                       placeholder="Nom" autocomplete="family-name"
+                       class="w-full p-2 border border-gray-200">
+                @error('last_name')
+                <span class="text-red-600 font-semibold"> {{$message}}</span>
+                @enderror
+            </div>
+        </div>
         <div class="flex flex-col gap-4 my-2">
             <label for="tagline" class="w-full">Phrase à propos</label>
             <input type="text" id="tagline" name="tagline" value="{{old('tagline', $businessCard->tagline)}}"

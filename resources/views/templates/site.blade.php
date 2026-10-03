@@ -60,6 +60,12 @@
             color: #4b5563;
         }
 
+        .contact-name {
+            margin: .25rem 0 0;
+            color: #6b7280;
+            font-size: .9rem;
+        }
+
         .contacts {
             list-style: none;
             margin: 1.5rem 0;
@@ -118,6 +124,9 @@
         @endif
 
         <h1>{{ $businessCard->company_name }}</h1>
+        @if ($businessCard->first_name || $businessCard->last_name)
+            <p class="contact-name">{{ trim($businessCard->first_name.' '.$businessCard->last_name) }}</p>
+        @endif
         @if ($businessCard->tagline)
             <p class="tagline">{{ $businessCard->tagline }}</p>
         @endif

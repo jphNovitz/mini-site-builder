@@ -13,6 +13,8 @@
             <div class="w-full grid grid-cols-2 gap-8 py-4">
                 <div class="text-right"><strong>Nom de l'entreprise:</strong></div>
                 <div> {{ $businessCard->company_name }}</div>
+                <div class="text-right"><strong>Contact:</strong></div>
+                <div> {{ trim($businessCard->first_name.' '.$businessCard->last_name) ?: '—' }}</div>
                 <div class="text-right"><strong>Phrase d'accroche:</strong></div>
                 <div> {{ $businessCard->tagline }}</div>
                 <div class="text-right"><strong>Numéro de TVA:</strong></div>

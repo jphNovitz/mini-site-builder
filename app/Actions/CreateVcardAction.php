@@ -18,15 +18,22 @@ class CreateVcardAction
 
     private function buildVCardContent(BusinessCard $businessCard): string
     {
+        $hasContactName = !empty($businessCard->first_name) || !empty($businessCard->last_name);
+        $fullName = trim($businessCard->first_name.' '.$businessCard->last_name);
+
         $content = "BEGIN:VCARD\n";
         $content .= "VERSION:3.0\n";
-        if(!empty ($businessCard->company_name)) $content .= "FN:{$this->escape($businessCard->company_name)}\n";
+        $content .= "FN:{$this->escape($hasContactName ? $fullName : $businessCard->company_name)}\n";
         if(!empty ($businessCard->phone_number)) $content .= "TEL:{$this->escape($businessCard->phone_number)}\n";
         if(!empty ($businessCard->email)) $content .= "EMAIL:{$businessCard->email}\n";
         if(!empty ($businessCard->website)) $content .= "URL:{$businessCard->website}\n";
         if(!empty ($businessCard->address)) $content .= "ADR:;;{$this->escape($businessCard->address)}\n";
         $content .= "ORG:{$this->escape($businessCard->company_name)}\n";
-        $content .= "N:;;;;\n";
+        if ($hasContactName) {
+            $content .= "N:{$this->escape($businessCard->last_name ?? '')};{$this->escape($businessCard->first_name ?? '')};;;\n";
+        } else {
+            $content .= "N:;;;;\n";
+        }
         $content .= "END:VCARD\n";
 
         return $content;
