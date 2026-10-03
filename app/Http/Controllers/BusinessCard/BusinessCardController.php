@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\BusinessCard;
 
 use App\Actions\Emails\SendConfirmationUserAction;
+use App\Contracts\SendDeletionConfirmedEmailContract;
+use App\Contracts\SendDeletionRequestEmailContract;
 use App\Enums\SocialMedia;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessCardStoreRequest;
 use App\Models\BusinessCard;
 use App\Services\SendConfirmationEmailService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class BusinessCardController extends Controller
 {
@@ -35,5 +39,48 @@ class BusinessCardController extends Controller
 
         return view('business-card.confirmation')->with('success', 'merci, en attente de validation');
     }
+
+    public function deleteRequest(BusinessCard $businessCard)
+    {
+        return view('business-card.delete.delete-form');
+    }
+
+    public function deleteAskConfirmation(SendDeletionRequestEmailContract $sendDeletionRequestEmailService)
+    {
+
+        if ($businessCard = BusinessCard::where('email', request('email'))
+            ->where('slug', request('slug'))
+            ->first()) {
+
+            $sendDeletionRequestEmailService->send($businessCard);
+
+        }
+
+
+
+        return view('business-card.delete.ask-confirmation');
+    }
+
+    public function delete(BusinessCard $businessCard, Request $request)
+    {
+        $destroyUrl = URL::temporarySignedRoute(
+            'business-card.destroy',
+            now()->addMinutes(30),
+            ['businessCard' => $businessCard->slug]
+        );
+
+        return view('business-card.delete.confirmation', compact('businessCard', 'destroyUrl'));
+
+    }
+    public function destroy(BusinessCard $businessCard, SendDeletionConfirmedEmailContract $sendDeletionConfirmedEmailService)
+    {
+        $businessCard->delete();
+        $sendDeletionConfirmedEmailService->send($businessCard);
+
+        return redirect('/')
+            ->with('success', 'La carte a été supprimée.');
+
+    }
+
 
 }

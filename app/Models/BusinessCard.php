@@ -6,6 +6,7 @@ use App\Enums\CardStatus;
 use App\Enums\QrTarget;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Prunable;
@@ -43,6 +44,13 @@ class BusinessCard extends Model
             if ($businessCard->marketing_consent) {
                 $businessCard->marketing_consent_at = now();
             }
+        });
+
+        static::deleting(function ($businessCard) {
+            if ($businessCard->logo_path) {
+                Storage::disk('public')->delete($businessCard->logo_path);
+            }
+            File::deleteDirectory(public_path('cartes/'.$businessCard->slug));
         });
     }
 

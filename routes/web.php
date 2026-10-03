@@ -23,6 +23,11 @@ Route::post('/admin/carte/{businessCard}/approve', [AdminBusinessCardController:
 Route::get('/', [BusinessCardController::class, 'create'])->name('business-card.create');
 Route::post('/creer-ma-carte', [BusinessCardController::class, 'store'])->name('business-card.store');
 
+//Delete a card
+Route::get('/supprimer-ma-carte', [BusinessCardController::class, 'deleteRequest'])->name('business-card.delete.request');
+Route::post('/supprimer-ma-carte', [BusinessCardController::class, 'deleteAskConfirmation'])->name('business-card.delete.askConfirmation');
+Route::get('/carte/{businessCard}/delete', [BusinessCardController::class, 'delete'])->name('business-card.delete')->middleware('signed');
+Route::delete('/carte/{businessCard}/destroy', [BusinessCardController::class, 'destroy'])->name('business-card.destroy') ->middleware('signed');
 
 //  Pages légales (contenu provisoire, à valider)
 Route::view('/mentions-legales', 'legal.mentions-legales')->name('legal.mentions-legales');
