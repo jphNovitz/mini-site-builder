@@ -7,6 +7,7 @@ use App\Contracts\SendDeletionConfirmedEmailContract;
 use App\Contracts\SendDeletionRequestEmailContract;
 use App\Enums\SocialMedia;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BusinessCardDeleteRequest;
 use App\Http\Requests\BusinessCardStoreRequest;
 use App\Models\BusinessCard;
 use App\Services\SendConfirmationEmailService;
@@ -45,19 +46,20 @@ class BusinessCardController extends Controller
         return view('business-card.delete.delete-form');
     }
 
-    public function deleteAskConfirmation(SendDeletionRequestEmailContract $sendDeletionRequestEmailService)
+    public function deleteAskConfirmation(SendDeletionRequestEmailContract $sendDeletionRequestEmailService, BusinessCardDeleteRequest $request)
     {
 
-        if ($businessCard = BusinessCard::where('email', request('email'))
-            ->where('slug', request('slug'))
+        $data = $request->validated();
+
+        if ($businessCard = BusinessCard::where('email', $data['email'])
+            ->where('slug', $data['slug'])
             ->first()) {
 
             $sendDeletionRequestEmailService->send($businessCard);
 
         }
 
-
-
+        
         return view('business-card.delete.ask-confirmation');
     }
 
