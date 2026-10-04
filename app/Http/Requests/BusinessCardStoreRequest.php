@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use GrantHolle\Altcha\Rules\ValidAltcha;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -38,6 +39,7 @@ class BusinessCardStoreRequest extends FormRequest
             'social_media_links.*' => 'nullable|url|max:255',
             'accent_color' => 'nullable|string|max:7|regex:/^#[0-9a-fA-F]{6}$/',
             'qr_target' => 'required|in:vcard,website',
+            'altcha' => auth()->check() ? ['nullable'] : new ValidAltcha(),
             'consent' => auth()->check() ? ['nullable'] : ['required', 'accepted'],
             'marketing_consent' => 'nullable'
         ];

@@ -16,7 +16,7 @@
     <meta name="twitter:title" content="@yield('title', 'Accueil')">
     <meta name="twitter:description" content="@yield('description', 'Créez gratuitement votre carte de visite numérique : coordonnées, réseaux sociaux et QR code, prête à partager en un lien.')">
     <meta name="twitter:image" content="@yield('image', asset('images/og-carte-de-visite.png'))">
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>@yield('title', 'Accueil')</title>
 </head>
 <body>

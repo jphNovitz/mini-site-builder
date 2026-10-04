@@ -170,6 +170,7 @@
         </div>
 
         @guest
+            <altcha-widget challenge="/altcha-challenge"> </altcha-widget>
             <div class="flex justify-start gap-2 my-2">
                 <input type="checkbox" id="consent" name="consent" required>
                 <label for="consent" class="text-sm">J’accepte que les informations renseignées dans ce formulaire soient publiées publiquement sur ma carte de visite numérique, accessible sur Internet.</label>

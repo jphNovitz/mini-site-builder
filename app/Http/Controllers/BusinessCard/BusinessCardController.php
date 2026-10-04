@@ -59,7 +59,7 @@ class BusinessCardController extends Controller
 
         }
 
-        
+
         return view('business-card.delete.ask-confirmation');
     }
 
