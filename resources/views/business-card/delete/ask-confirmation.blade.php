@@ -10,7 +10,7 @@
     <h1 class="text-2xl font-bold text-slate-900">Suppression de votre carte de visite</h1>
 
     <section class="mt-8">
-        <p>Si une carte avec ce nom ete cet email est trouvé, la carte et le logo seront définitivement supprimés</p>
+        <p>Si une carte avec ce nom et cet email est trouvée, la carte et le logo seront définitivement supprimés</p>
 
     </section>
 @endsection

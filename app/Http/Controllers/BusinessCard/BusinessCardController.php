@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\BusinessCard;
 
-use App\Actions\Emails\SendConfirmationUserAction;
 use App\Contracts\SendDeletionConfirmedEmailContract;
 use App\Contracts\SendDeletionRequestEmailContract;
 use App\Enums\SocialMedia;
@@ -41,7 +40,7 @@ class BusinessCardController extends Controller
         return view('business-card.confirmation')->with('success', 'merci, en attente de validation');
     }
 
-    public function deleteRequest(BusinessCard $businessCard)
+    public function deleteRequest()
     {
         return view('business-card.delete.delete-form');
     }
