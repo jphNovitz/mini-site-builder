@@ -77,9 +77,16 @@
             </p>
 
             <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                JPHIWEB se réserve le droit de vérifier les informations fournies et de refuser une demande qui ne
-                correspond pas à l’objet du service ou qui contient un contenu manifestement illicite, trompeur,
-                abusif ou portant atteinte aux droits d’un tiers.
+                La validation consiste principalement à vérifier que la demande émane d’une personne ou d’une
+                entreprise réelle, notamment au moyen d’un contrôle automatisé anti-spam lors de la soumission du
+                formulaire. JPHIWEB se réserve également le droit de ne pas valider une demande qui ne correspondrait
+                manifestement pas à l’objet du service ou qui contiendrait un contenu manifestement illicite,
+                trompeur ou portant atteinte aux droits d’un tiers.
+            </p>
+
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                Une demande non validée n’est pas publiée et est automatiquement supprimée après 30 jours (voir
+                « Demandes en attente »), sans notification systématique de refus.
             </p>
 
             <p class="mt-2 text-sm leading-relaxed text-slate-600">
@@ -176,8 +183,9 @@
 
             <p class="mt-2 text-sm leading-relaxed text-slate-600">
                 L’utilisateur reçoit des e-mails nécessaires au fonctionnement du service, notamment pour confirmer la
-                réception de sa demande et l’informer de la validation, du refus, de la publication ou de la suppression
-                de sa carte.
+                réception de sa demande, l’informer de la validation et de la publication de sa carte, ou confirmer sa
+                suppression. Une demande non validée n’est pas publiée et est automatiquement supprimée après 30
+                jours, sans e-mail de refus systématique.
             </p>
 
             <p class="mt-2 text-sm leading-relaxed text-slate-600">
@@ -208,12 +216,13 @@
 
         <section class="mt-6">
             <h2 class="text-lg font-semibold text-slate-900">
-                Suspension ou suppression d’une carte
+                Suppression d’une carte par JPHIWEB
             </h2>
 
             <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                JPHIWEB peut suspendre ou supprimer une carte lorsqu’il existe un motif raisonnable de considérer
-                qu’elle :
+                JPHIWEB n’exerce pas de contrôle actif et permanent sur le contenu des cartes publiées. JPHIWEB se
+                réserve toutefois le droit de supprimer une carte publiée, notamment sur signalement d’un tiers ou à
+                la demande d’une autorité compétente, lorsqu’il existe un motif raisonnable de considérer qu’elle :
             </p>
 
             <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
@@ -225,8 +234,8 @@
             </ul>
 
             <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                Lorsque les circonstances le permettent, JPHIWEB peut contacter le titulaire de la carte avant ou après
-                sa suspension afin de lui permettre de fournir des explications ou de corriger le contenu concerné.
+                Lorsque les circonstances le permettent, JPHIWEB informe le titulaire de la carte de cette
+                suppression.
             </p>
         </section>
 

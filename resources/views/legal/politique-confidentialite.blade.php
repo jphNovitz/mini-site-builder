@@ -133,7 +133,6 @@
                 <li>la réception de la demande ;</li>
                 <li>la mise en attente de validation ;</li>
                 <li>la validation et la publication de la carte ;</li>
-                <li>le refus éventuel de la demande ;</li>
                 <li>une modification concernant la carte ;</li>
                 <li>sa suppression ou son expiration.</li>
             </ul>
