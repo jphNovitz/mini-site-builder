@@ -1,0 +1,64 @@
+x-db-env: &db-env
+  DB_CONNECTION: mysql
+  DB_HOST: mysql
+  DB_PORT: 3306
+  DB_DATABASE: mini_site_builder
+  DB_USERNAME: msb
+  DB_PASSWORD: msb-test
+  APP_URL: http://localhost:8090
+
+services:
+  mysql:
+    image: mariadb:10.11
+    environment:
+      MYSQL_ROOT_PASSWORD: root-test
+      MYSQL_DATABASE: mini_site_builder
+      MYSQL_USER: msb
+      MYSQL_PASSWORD: msb-test
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "127.0.0.1", "-uroot", "-proot-test", "--silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  migrate:
+    build: .
+    command: php artisan migrate --force
+    env_file: .env
+    environment: *db-env
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: "no"
+
+  app:
+    build: .
+    ports:
+      - "8090:8080"
+    env_file: .env
+    environment: *db-env
+    volumes:
+      - cartes:/app/public/cartes
+      - logos:/app/storage/app/public
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  scheduler:
+    build: .
+    command: sh -c "while true; do php artisan schedule:run; sleep 60; done"
+    env_file: .env
+    environment: *db-env
+    volumes:
+      - cartes:/app/public/cartes
+      - logos:/app/storage/app/public
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+volumes:
+  mariadb-data:
+  cartes:
+  logos:

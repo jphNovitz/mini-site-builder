@@ -1,0 +1,19 @@
+{
+    frankenphp
+    order php_server before file_server
+}
+
+http://:8080 {
+    root * /app/public
+    encode zstd br gzip
+
+    handle /cartes/* {
+        file_server {
+            index index.html
+        }
+    }
+
+    handle {
+        php_server
+    }
+}
