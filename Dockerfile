@@ -19,7 +19,7 @@ COPY --from=vendor /app/vendor ./vendor
 RUN npm run build
 
 FROM dunglas/frankenphp:1-php8.4-bookworm AS app
-RUN install-php-extensions zip pdo_sqlite pdo_mysql
+RUN install-php-extensions zip intl pdo_sqlite pdo_mysql
 WORKDIR /app
 COPY . .
 COPY --from=vendor /app/vendor ./vendor

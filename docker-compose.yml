@@ -3,10 +3,6 @@ services:
     build: .
     command: php artisan migrate --force
     env_file: .env
-    environment: *app-env
-    depends_on:
-      mysql:
-        condition: service_healthy
     restart: "no"
 
   app:
@@ -15,7 +11,6 @@ services:
     ports:
       - "127.0.0.1:8090:8080"
     env_file: .env
-    environment: *app-env
     volumes:
       - cartes:/app/public/cartes
       - logos:/app/storage/app/public
@@ -28,7 +23,6 @@ services:
     restart: unless-stopped
     command: sh -c "while true; do php artisan schedule:run; sleep 60; done"
     env_file: .env
-    environment: *app-env
     volumes:
       - cartes:/app/public/cartes
       - logos:/app/storage/app/public
@@ -37,6 +31,5 @@ services:
         condition: service_completed_successfully
 
 volumes:
-  mariadb-data:
   cartes:
   logos:

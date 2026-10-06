@@ -1,0 +1,26 @@
+# Développement local uniquement, à utiliser avec le fichier principal :
+#   docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+# Ne pas renommer ce fichier en docker-compose.override.yml : il serait chargé automatiquement sur le VPS.
+services:
+  mysql:
+    image: mariadb:10.11
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${DB_DATABASE}
+      MARIADB_USER: ${DB_USERNAME}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "127.0.0.1", "-uroot", "-p${DB_ROOT_PASSWORD}", "--silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  migrate:
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  mariadb-data:

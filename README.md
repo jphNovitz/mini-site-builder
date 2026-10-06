@@ -21,6 +21,26 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
+## Docker
+
+Le projet tourne dans Docker (FrankenPHP, MariaDB en local). Les valeurs sensibles viennent du fichier `.env` : copier `.env.example` pour démarrer.
+
+**Développement local** (MariaDB dans un conteneur, données dans le volume `mariadb-data`) :
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+```
+
+L'application est disponible sur http://localhost:8090. Le fichier `docker-compose.dev.yml` n'est pas nommé `docker-compose.override.yml` volontairement : ce nom serait chargé automatiquement sur le serveur de production.
+
+**Production** (base OVH Web Cloud Databases, HTTPS géré par Apache en reverse proxy) :
+
+```bash
+docker compose up -d --build
+```
+
+Seuls `migrate`, `app` et `scheduler` sont lancés, et l'application écoute sur `127.0.0.1:8090`. La base de données n'est pas dans cette stack : `DB_HOST`, `DB_PORT`, `DB_*` et `MYSQL_ATTR_SSL_CA` doivent être renseignés dans le `.env` du serveur (voir `.env.example`).
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
