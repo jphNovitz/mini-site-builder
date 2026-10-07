@@ -23,6 +23,8 @@ services:
     restart: unless-stopped
     command: sh -c "while true; do php artisan schedule:run; sleep 60; done"
     env_file: .env
+    healthcheck:
+        test: [ "NONE" ]
     volumes:
       - cartes:/app/public/cartes
       - logos:/app/storage/app/public
