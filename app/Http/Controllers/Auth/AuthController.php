@@ -7,6 +7,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+
 class AuthController extends Controller
 {
     public function showLogin()
@@ -17,6 +21,17 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
+
+        $user = User::where('email', $request->input('email'))->first();
+
+        Log::info('login debug', [
+            'email' => $request->input('email'),
+            'email_length' => strlen((string) $request->input('email')),
+            'password_length' => strlen((string) $request->input('password')),
+            'user_found' => (bool) $user,
+            'hash_ok' => $user ? Hash::check((string) $request->input('password'), $user->password) : null,
+            'intended' => session('url.intended'),
+        ]);
 
         if (auth()->attempt($credentials)) {
             return redirect()->intended('/admin');
