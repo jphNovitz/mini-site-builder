@@ -52,5 +52,13 @@ class BusinessCardStoreRequest extends FormRequest
             'logo.max' => 'Le logo ne peut pas dépasser 2 Mo.',
         ];
     }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'consent' => $this->boolean('consent'),
+            'marketing_consent' => $this->boolean('marketing_consent'),
+        ]);
+    }
 }
 
