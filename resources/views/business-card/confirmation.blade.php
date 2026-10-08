@@ -5,7 +5,7 @@
             {{ $success }}
         </div>
     @endif
-    <p><a href="{{route('/')}}">Retour à l'accueil</a>/p>
+    <p><a href="{{ route('business-card.create') }}">Retour à l'accueil</a></p>
     <h2>Votre carte est en attente de publication</h2>
 
     <p>Afin d'éviter les inscriptions automatiques et les publications indésirables, chaque carte fait l'objet d'une validation manuelle avant sa mise en ligne.
