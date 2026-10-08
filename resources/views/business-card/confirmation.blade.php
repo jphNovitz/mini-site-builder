@@ -6,9 +6,17 @@
         </div>
     @endif
 
-    <p>Dès vérification de la carte (pour éviter les bots) votre carte sera publiée.</p>
+    <h2>Votre carte est en attente de publication</h2>
 
-    <p>Si vous souhaitez aller plus loin dans votre présence web ou tout simplement si vous avez besoin d'aide n'hésitez
-        pas à me contacter {{config('app.admin_email')}}</p>
-    <p>Jeanphi de <a href="http://jphiweb.be">Jphiweb.be</a></p>
+    <p>Afin d'éviter les inscriptions automatiques et les publications indésirables, chaque carte fait l'objet d'une validation manuelle avant sa mise en ligne.
+
+    <strong>Aucune action n'est nécessaire de votre part</strong>. Vous recevrez un email dès que votre carte sera publiée, avec son lien d'accès.</p>
+
+
+   <h3 class="mt-16"> Besoin d'aller plus loin ?</h3>
+
+    <p>Vous souhaitez développer votre présence sur Internet ou avez simplement besoin d'un conseil ? N'hésitez pas à me contacter à
+        <a href="mailto:bonjour@jphiweb.be">bonjour@jphiweb.be</a>.</p>
+
+    <p>Jeanphi — <a href="https://jphiweb.be">JPHIWEB</a></p>
 @endsection

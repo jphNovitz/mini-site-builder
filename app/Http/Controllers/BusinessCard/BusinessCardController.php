@@ -37,7 +37,7 @@ class BusinessCardController extends Controller
 
         $sendConfirmationEmailService->send($businessCard);
 
-        return view('business-card.confirmation')->with('success', 'merci, en attente de validation');
+        return view('business-card.confirmation')->with('success', 'Votre carte de visite a bien été créée !');
     }
 
     public function deleteRequest()
