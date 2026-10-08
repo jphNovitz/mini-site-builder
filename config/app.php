@@ -128,5 +128,6 @@ return [
     | emails
     |--------------------------------------------------------------------------
     */
-    'admin_email' => env('ADMIN_EMAIL')
+    'admin_email' => env('ADMIN_EMAIL'),
+    'mail_from' => env('MAIL_FROM_ADDRESS')
 ];

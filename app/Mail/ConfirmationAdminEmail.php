@@ -29,7 +29,7 @@ class ConfirmationAdminEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: config('app.admin_email'),
+            from: config('app.mail_from'),
             subject: 'Confirmation Admin Email',
         );
     }
