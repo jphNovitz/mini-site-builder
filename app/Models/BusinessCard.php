@@ -37,7 +37,8 @@ class BusinessCard extends Model
     protected static function booted()
     {
         static::creating(function ($businessCard) {
-            $businessCard->slug = static::createUniqueSlug($businessCard->company_name);
+            $businessCard->slug = static::createUniqueSlug($businessCard->display_name);
+
             if ($businessCard->consent) {
                 $businessCard->consent_at = now();
             }
@@ -47,8 +48,8 @@ class BusinessCard extends Model
         });
 
         static::updating(function ($businessCard) {
-            if ($businessCard->isDirty('company_name')) {
-                $businessCard->slug = static::createUniqueSlug($businessCard->company_name, $businessCard->id);
+            if ($businessCard->isDirty(['company_name', 'first_name', 'last_name'])) {
+                $businessCard->slug = static::createUniqueSlug($businessCard->display_name, $businessCard->id);
             }
         });
 
@@ -70,6 +71,7 @@ class BusinessCard extends Model
         while (BusinessCard::where('slug', $slug)->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))->exists()) {
             $slug = $original . '-' . $count++;
         }
+
         return $slug;
     }
 
@@ -91,5 +93,8 @@ class BusinessCard extends Model
         }
     }
 
-
+    public function getDisplayNameAttribute(): string
+    {
+        return $this->company_name ?: trim($this->first_name . ' ' . $this->last_name);
+    }
 }

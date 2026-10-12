@@ -24,9 +24,9 @@ class BusinessCardStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'company_name' => 'required|string|max:255',
-            'first_name' => 'nullable|string|max:255',
-            'last_name' => 'nullable|string|max:255',
+            'company_name' => 'required_without:first_name,last_name|string|max:255',
+            'first_name' => 'required_without:company_name|string|max:255',
+            'last_name' => 'required_without:company_name|string|max:255',
             'logo' => ['nullable', 'image', 'mimes:jpeg,jpg,png,webp', 'max:2048'],
             'tagline' => 'nullable|string|max:255',
             'vat_number' => 'nullable|string|max:255',
