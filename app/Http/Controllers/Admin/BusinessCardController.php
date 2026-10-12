@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessCardStoreRequest;
 use App\Models\BusinessCard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class BusinessCardController extends Controller
 {
@@ -41,7 +42,14 @@ class BusinessCardController extends Controller
                 ->store('logos', 'public');
         }
 
+        $oldSlug = $businessCard->slug;
+
         $businessCard->update($data);
+
+        if ($businessCard->slug !== $oldSlug) {
+            File::deleteDirectory(public_path('cartes/' . $oldSlug));
+        }
+
         if ($businessCard->status === CardStatus::Published) {
             $publishSite->create($businessCard);
         }

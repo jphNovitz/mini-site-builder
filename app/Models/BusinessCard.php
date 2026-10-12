@@ -46,6 +46,14 @@ class BusinessCard extends Model
             }
         });
 
+        static::updating(function ($businessCard) {
+            if ($businessCard->isDirty('company_name')) {
+                $businessCard->slug = static::createUniqueSlug($businessCard->company_name, $businessCard->id);
+            }
+        });
+
+
+
         static::deleting(function ($businessCard) {
             if ($businessCard->logo_path) {
                 Storage::disk('public')->delete($businessCard->logo_path);
@@ -54,12 +62,12 @@ class BusinessCard extends Model
         });
     }
 
-    protected static function createUniqueSlug($companyName)
+    protected static function createUniqueSlug($companyName, $ignoreId = null)
     {
         $slug = Str::slug($companyName);
         $original = $slug;
         $count = 1;
-        while (BusinessCard::where('slug', $slug)->exists()) {
+        while (BusinessCard::where('slug', $slug)->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))->exists()) {
             $slug = $original . '-' . $count++;
         }
         return $slug;
