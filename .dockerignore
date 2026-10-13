@@ -6,7 +6,7 @@ vendor
 node_modules
 public/hot
 public/build
-public/cartes
+public/c
 public/storage
 storage/logs/*
 storage/framework/cache/*

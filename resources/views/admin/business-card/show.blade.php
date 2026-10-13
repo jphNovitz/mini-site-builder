@@ -78,7 +78,7 @@
                                    class="bg-green-700 text-green-50 p-4 rounded-md">
                         </form>
                     @else()
-                        <a href="{{ url('/cartes/'.$businessCard->slug).'/' }}" target="_blank"
+                        <a href="{{ url('/c/'.$businessCard->slug).'/' }}" target="_blank"
                            class="bg-brand text-brand-soft p-4 rounded-md">Voir la carte</a>
                     @endif()
                 </div>

@@ -47,7 +47,7 @@ class BusinessCardController extends Controller
         $businessCard->update($data);
 
         if ($businessCard->slug !== $oldSlug) {
-            File::deleteDirectory(public_path('cartes/' . $oldSlug));
+            File::deleteDirectory(public_path('c/' . $oldSlug));
         }
 
         if ($businessCard->status === CardStatus::Published) {

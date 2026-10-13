@@ -27,8 +27,8 @@ COPY --from=assets /app/public/build ./public/build
 COPY docker/Caddyfile /etc/frankenphp/Caddyfile
 RUN php artisan package:discover --ansi \
  && php artisan storage:link
-RUN mkdir -p storage/framework/sessions storage/framework/views storage/framework/cache storage/logs bootstrap/cache public/cartes \
- && chown -R www-data:www-data storage bootstrap/cache database public/cartes
+RUN mkdir -p storage/framework/sessions storage/framework/views storage/framework/cache storage/logs bootstrap/cache public/c \
+ && chown -R www-data:www-data storage bootstrap/cache database public/c
 RUN setcap -r /usr/local/bin/frankenphp \
  && chown -R www-data:www-data /data/caddy /config/caddy
 ENV APP_ENV=production \

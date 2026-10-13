@@ -19,7 +19,7 @@ class ZipAction
         // Chemin absolu, pour matcher $file->getRealPath() plus bas (aussi absolu).
         // Avec un chemin relatif ici, strlen($sourcePath) ne correspond plus à rien
         // dans $filePath, et le substr() coupe au mauvais endroit.
-        $sourcePath = public_path('cartes/'.$slug);
+        $sourcePath = public_path('c/'.$slug);
 
         Storage::disk('local')->makeDirectory($directory);
 

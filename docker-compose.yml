@@ -12,7 +12,7 @@ services:
       - "127.0.0.1:8090:8080"
     env_file: .env
     volumes:
-      - cartes:/app/public/cartes
+      - cartes:/app/public/c
       - logos:/app/storage/app/public
     depends_on:
       migrate:
@@ -26,7 +26,7 @@ services:
     healthcheck:
         test: [ "NONE" ]
     volumes:
-      - cartes:/app/public/cartes
+      - cartes:/app/public/c
       - logos:/app/storage/app/public
     depends_on:
       migrate:

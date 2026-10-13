@@ -78,7 +78,7 @@
 
             <p class="mt-2 text-sm leading-relaxed text-slate-600">
                 Une fois validée, la carte est accessible publiquement sur Internet à une adresse de type
-                <strong>/cartes/nom-carte</strong>.
+                <strong>/c/nom-carte</strong>.
             </p>
 
             <p class="mt-2 text-sm leading-relaxed text-slate-600">

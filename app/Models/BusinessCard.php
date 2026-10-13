@@ -59,7 +59,7 @@ class BusinessCard extends Model
             if ($businessCard->logo_path) {
                 Storage::disk('public')->delete($businessCard->logo_path);
             }
-            File::deleteDirectory(public_path('cartes/'.$businessCard->slug));
+            File::deleteDirectory(public_path('c/'.$businessCard->slug));
         });
     }
 

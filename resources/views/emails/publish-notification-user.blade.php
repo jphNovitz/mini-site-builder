@@ -58,15 +58,15 @@
                                         Votre carte est accessible en ligne
                                     </p>
 
-                                    <a href="{{ url('/cartes/'.$businessCard->slug).'/' }}"
+                                    <a href="{{ url('/c/'.$businessCard->slug).'/' }}"
                                        style="display:inline-block;padding:13px 24px;background-color:#166534;color:#ffffff;text-decoration:none;font-size:14px;font-weight:bold;border-radius:5px;">
                                         Voir ma carte de visite &rarr;
                                     </a>
 
                                     <p style="margin:18px 0 0;font-size:12px;line-height:1.6;overflow-wrap:anywhere;">
-                                        <a href="{{ url('/cartes/'.$businessCard->slug).'/' }}"
+                                        <a href="{{ url('/c/'.$businessCard->slug).'/' }}"
                                            style="color:#166534;text-decoration:underline;">
-                                            {{ url('/cartes/'.$businessCard->slug).'/' }}
+                                            {{ url('/c/'.$businessCard->slug).'/' }}
                                         </a>
                                     </p>
                                 </td>

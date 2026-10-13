@@ -7,7 +7,7 @@ http://:8080 {
     root * /app/public
     encode zstd br gzip
 
-    handle /cartes/* {
+    handle /c/* {
         file_server {
             index index.html
         }

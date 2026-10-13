@@ -23,7 +23,7 @@ class PublishSiteService implements PublishSiteContract
 
     public function create(BusinessCard $businessCard): void
     {
-        $directory = public_path('cartes/' . $businessCard->slug);
+        $directory = public_path('c/' . $businessCard->slug);
 
         $logo = null;
         $this->prepareFolderAction->execute($directory);
