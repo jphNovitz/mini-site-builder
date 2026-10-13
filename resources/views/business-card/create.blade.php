@@ -3,6 +3,22 @@
 @section('description', 'Donnez une adresse web à votre activité, gratuitement : formulaire de 2 minutes, carte en ligne avec QR code après validation.')
 @section('image', asset('images/og-carte-de-visite.png'))
 @section('content')
+    @if(session('success'))
+        <div role="status" class="mb-6 flex items-center gap-3 rounded-lg border border-green-200 bg-green-50 px-6 py-4 text-green-800">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="h-5 w-5 shrink-0"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke="currentColor"
+                 stroke-width="2">
+                <path stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9 12.75 11.25 15 15 9.75 M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z" />
+            </svg>
+            <p class="text-sm font-medium">{{ session('success') }}</p>
+        </div>
+    @endif
+
     @include('business-card.hero')
 
     {{-- ───────── formulaire ───────── --}}
