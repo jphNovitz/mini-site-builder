@@ -44,6 +44,6 @@ class PublishSiteService implements PublishSiteContract
         $qrCode = $this->createQrCodeAction->execute($content);
 
 
-        $this->createHtmlAction->execute($businessCard, $logo, $qrCode, $vcardContent, $directory);
+        $this->createHtmlAction->execute($businessCard, $logo, $qrCode, $directory);
     }
 }

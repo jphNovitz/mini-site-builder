@@ -16,10 +16,6 @@
     $hasContacts = $businessCard->phone_number || $businessCard->email || $businessCard->website || $businessCard->address;
     $cardUrl = url('/c/'.$businessCard->slug.'/');
     $cardUrlLabel = preg_replace('#^https?://#i', '', $cardUrl);
-    // Même contenu que le QR code : le navigateur reçoit directement le vCard,
-    // au lieu de devoir télécharger contact.vcf (qui ne déclenche pas toujours
-    // le prompt natif "Ajouter aux contacts" sur mobile).
-    $vcardDataUri = 'data:text/vcard;charset=utf-8,' . rawurlencode($vcard);
 @endphp
     <!doctype html>
 <html lang="fr">
@@ -469,7 +465,7 @@
 
     {{-- Actions --}}
     <div class="actions">
-        <a class="btn btn-primary" href="{{ $vcardDataUri }}">
+        <a class="btn btn-primary" href="contact.vcf" download>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/></svg>
             Ajouter à mes contacts
         </a>
