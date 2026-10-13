@@ -497,7 +497,7 @@
         <div class="qr-code" role="img" aria-label="QR code pour ajouter {{ $heading }} à vos contacts">
             {!! $qrCode !!}
         </div>
-        <p class="qr-link">Ou partagez le lien : <strong>{{ preg_replace('#^https?://#i', '', url()->current()) }}</strong></p>
+        <p class="qr-link">Ou partagez le lien : <strong>{{ preg_replace('#^https?://#i', '', url('/c/'.$businessCard->slug.'/')) }}</strong></p>
     </dialog>
 
     <script>
