@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <link rel="icon"
+          type="image/svg+xml"
+          href="@yield('favicon', asset('icons/favicon.svg'))">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="@yield('description', 'Créez gratuitement votre carte de visite numérique : coordonnées, réseaux sociaux et QR code, prête à partager en un lien.')">
     <meta property="og:type" content="website">
