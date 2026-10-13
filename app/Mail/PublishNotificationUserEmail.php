@@ -29,7 +29,7 @@ class PublishNotificationUserEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: config('app.mail.from'),
+            from: config('app.mail_from'),
             subject: 'Votre carte de visite est en ligne !',
         );
     }

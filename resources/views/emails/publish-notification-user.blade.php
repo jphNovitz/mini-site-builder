@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Votre carte de visite est en ligne</title>
 </head>
+
 <body style="margin:0;padding:0;background-color:#f1f5f9;font-family:Arial,Helvetica,sans-serif;color:#1e293b;">
 
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f1f5f9;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+       style="background-color:#f1f5f9;">
     <tr>
         <td align="center" style="padding:32px 12px;">
 
@@ -18,18 +20,22 @@
                 <!-- En-tête -->
                 <tr>
                     <td style="padding:28px 32px 22px;border-bottom:1px solid #e2e8f0;">
+
                         <span style="font-size:20px;font-weight:bold;color:#166534;">
                             JPHIWEB
                         </span>
+
                         <p style="margin:5px 0 0;font-size:12px;color:#64748b;">
                             Cartes de visite numériques
                         </p>
+
                     </td>
                 </tr>
 
                 <!-- Message principal -->
                 <tr>
                     <td style="padding:32px 32px 20px;">
+
                         <p style="margin:0 0 10px;font-size:12px;font-weight:bold;letter-spacing:1px;color:#15803d;">
                             PUBLICATION TERMINÉE
                         </p>
@@ -44,9 +50,10 @@
                         </p>
 
                         <p style="margin:0 0 24px;font-size:15px;line-height:1.7;">
-                            Elle est maintenant accessible depuis son adresse
-                            personnelle. Vous pouvez la partager avec vos
-                            clients, contacts et partenaires.
+                            Elle est désormais accessible gratuitement
+                            depuis son adresse personnelle.
+                            Vous pouvez la partager avec vos clients,
+                            contacts et partenaires.
                         </p>
 
                         <!-- Lien de la carte -->
@@ -54,6 +61,7 @@
                                style="background-color:#f0fdf4;border:1px solid #dcfce7;border-radius:6px;">
                             <tr>
                                 <td align="center" style="padding:24px 16px;">
+
                                     <p style="margin:0 0 18px;font-size:14px;font-weight:bold;color:#166534;">
                                         Votre carte est accessible en ligne
                                     </p>
@@ -69,30 +77,92 @@
                                             {{ url('/c/'.$businessCard->slug).'/' }}
                                         </a>
                                     </p>
+
                                 </td>
                             </tr>
                         </table>
+
                     </td>
                 </tr>
 
                 <!-- Pièces jointes -->
                 <tr>
                     <td style="padding:8px 32px 28px;">
+
                         <h2 style="margin:0 0 10px;font-size:16px;color:#0f172a;">
                             Vos fichiers sont joints à cet email
                         </h2>
 
-                        <p style="margin:0;font-size:14px;line-height:1.7;color:#475569;">
-                            Vous trouverez également les fichiers de votre carte
-                            en pièces jointes. Conservez-les pour pouvoir
-                            les utiliser et partager votre carte facilement.
+                        <p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#475569;">
+                            Vous trouverez en pièces jointes les fichiers
+                            de votre carte de visite numérique.
+                            Vous pouvez les conserver et les utiliser
+                            pour héberger votre carte sur votre propre
+                            espace web.
                         </p>
+
+                        <p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#475569;">
+                            <strong style="color:#334155;">
+                                Rien à faire pour le moment !
+                            </strong>
+                            Votre carte est déjà en ligne et accessible
+                            gratuitement grâce au lien ci-dessus.
+                        </p>
+
+                        <!-- Hébergement personnel -->
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+                               style="background-color:#f8fafc;border-left:3px solid #166534;">
+
+                            <tr>
+                                <td style="padding:18px 20px;">
+
+                                    <h3 style="margin:0 0 12px;font-size:15px;line-height:1.5;color:#0f172a;">
+                                        Vous souhaitez utiliser votre propre nom de domaine ?
+                                    </h3>
+
+                                    <p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#475569;">
+                                        Certains fournisseurs de noms de domaine
+                                        proposent également un petit espace
+                                        d'hébergement web gratuit ou à faible coût.
+                                    </p>
+
+                                    <p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#475569;">
+                                        Une fois votre nom de domaine relié
+                                        à cet hébergement, il suffit généralement
+                                        d'y déposer les fichiers fournis
+                                        pour rendre votre carte accessible
+                                        à votre propre adresse.
+                                    </p>
+
+                                    <p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#475569;">
+                                        Cette démarche est entièrement facultative :
+                                        votre carte peut rester accessible
+                                        gratuitement à son adresse actuelle.
+                                    </p>
+
+                                    <p style="margin:0;font-size:14px;line-height:1.7;color:#475569;">
+                                        Vous ne savez pas comment procéder
+                                        ou souhaitez un coup de main ?
+                                        N'hésitez pas à me contacter à
+                                        <a href="mailto:bonjour@jphiweb.be"
+                                           style="color:#166534;font-weight:bold;text-decoration:underline;">
+                                            bonjour@jphiweb.be
+                                        </a>.
+                                        Je pourrai vous conseiller.
+                                    </p>
+
+                                </td>
+                            </tr>
+
+                        </table>
+
                     </td>
                 </tr>
 
                 <!-- Récapitulatif -->
                 <tr>
                     <td style="padding:0 32px 32px;">
+
                         <h2 style="margin:0 0 14px;font-size:16px;color:#0f172a;">
                             Informations publiées
                         </h2>
@@ -100,17 +170,30 @@
                         <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
                                style="border:1px solid #e2e8f0;border-radius:6px;">
 
-                            <tr>
-                                <td style="padding:12px;font-size:13px;color:#64748b;width:35%;border-bottom:1px solid #e2e8f0;">
-                                    Entreprise
-                                </td>
-                                <td style="padding:12px;font-size:14px;font-weight:bold;border-bottom:1px solid #e2e8f0;overflow-wrap:anywhere;">
-                                    {{ $businessCard->company_name }}
-                                </td>
-                            </tr>
+                            @if($businessCard->company_name)
+                                <tr>
+                                    <td style="padding:12px;font-size:13px;color:#64748b;width:35%;border-bottom:1px solid #e2e8f0;">
+                                        Entreprise
+                                    </td>
+                                    <td style="padding:12px;font-size:14px;font-weight:bold;border-bottom:1px solid #e2e8f0;overflow-wrap:anywhere;">
+                                        {{ $businessCard->company_name }}
+                                    </td>
+                                </tr>
+                            @endif
+
+                            @if($businessCard->first_name || $businessCard->last_name)
+                                <tr>
+                                    <td style="padding:12px;font-size:13px;color:#64748b;width:35%;border-bottom:1px solid #e2e8f0;">
+                                        Contact
+                                    </td>
+                                    <td style="padding:12px;font-size:14px;border-bottom:1px solid #e2e8f0;overflow-wrap:anywhere;">
+                                        {{ trim($businessCard->first_name.' '.$businessCard->last_name) }}
+                                    </td>
+                                </tr>
+                            @endif
 
                             <tr>
-                                <td style="padding:12px;font-size:13px;color:#64748b;border-bottom:1px solid #e2e8f0;">
+                                <td style="padding:12px;font-size:13px;color:#64748b;width:35%;border-bottom:1px solid #e2e8f0;">
                                     Email
                                 </td>
                                 <td style="padding:12px;font-size:14px;border-bottom:1px solid #e2e8f0;overflow-wrap:anywhere;">
@@ -152,12 +235,15 @@
                             @endif
 
                         </table>
+
                     </td>
                 </tr>
 
                 <!-- Signature JPHIWEB -->
                 <tr>
-                    <td align="center" style="padding:24px 32px;background-color:#f8fafc;border-top:1px solid #e2e8f0;">
+                    <td align="center"
+                        style="padding:24px 32px;background-color:#f8fafc;border-top:1px solid #e2e8f0;">
+
                         <p style="margin:0 0 6px;font-size:12px;color:#64748b;">
                             Un service gratuit proposé par
                         </p>
@@ -175,12 +261,35 @@
                                 www.jphiweb.be
                             </a>
                         </p>
+
                     </td>
                 </tr>
 
             </table>
+
         </td>
     </tr>
+
+    <!-- Suppression de la carte -->
+    <tr>
+        <td align="center"
+            style="padding:16px 32px 24px;background-color:#f8fafc;">
+
+            <p style="margin:0;font-size:12px;line-height:1.7;color:#64748b;">
+                Vous gardez le contrôle de vos données.
+                Vous pouvez demander à tout moment la suppression
+                de votre carte de visite et de toutes les informations
+                associées.
+                <br>
+                <a href="{{ url('/supprimer-ma-carte') }}"
+                   style="color:#166534;text-decoration:underline;">
+                    Supprimer ma carte et mes informations
+                </a>
+            </p>
+
+        </td>
+    </tr>
+
 </table>
 
 </body>
