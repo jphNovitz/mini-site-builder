@@ -14,6 +14,8 @@
         ->map(fn ($w) => mb_strtoupper(mb_substr($w, 0, 1)))->implode('');
     $websiteLabel = $businessCard->website ? rtrim(preg_replace('#^https?://#i', '', $businessCard->website), '/') : null;
     $hasContacts = $businessCard->phone_number || $businessCard->email || $businessCard->website || $businessCard->address;
+    $cardUrl = url('/c/'.$businessCard->slug.'/');
+    $cardUrlLabel = preg_replace('#^https?://#i', '', $cardUrl);
 @endphp
     <!doctype html>
 <html lang="fr">
@@ -329,6 +331,7 @@
         .qr-code svg { display: block; width: 100%; height: auto; }
         .qr-link { margin: 0; font-size: 13px; color: var(--muted); text-align: center; overflow-wrap: anywhere; }
         .qr-link strong { color: var(--accent-ink); }
+        .qr-link a { text-decoration: underline; }
 
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -462,7 +465,7 @@
 
     {{-- Actions --}}
     <div class="actions">
-        <a class="btn btn-primary" href="contact.vcf" download>
+        <a class="btn btn-primary" href="contact.vcf">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/></svg>
             Ajouter à mes contacts
         </a>
@@ -497,7 +500,7 @@
         <div class="qr-code" role="img" aria-label="QR code pour ajouter {{ $heading }} à vos contacts">
             {!! $qrCode !!}
         </div>
-        <p class="qr-link">Ou partagez le lien : <strong>{{ preg_replace('#^https?://#i', '', url('/c/'.$businessCard->slug.'/')) }}</strong></p>
+        <p class="qr-link">Ou partagez le lien : <a href="{{ $cardUrl }}"><strong>{{ $cardUrlLabel }}</strong></a></p>
     </dialog>
 
     <script>
