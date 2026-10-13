@@ -22,6 +22,7 @@ Route::post('/admin/carte/{businessCard}/approve', [AdminBusinessCardController:
 //  Create card
 Route::get('/', [BusinessCardController::class, 'create'])->name('business-card.create');
 Route::post('/creer-ma-carte', [BusinessCardController::class, 'store'])->name('business-card.store');
+Route::get('/carte-creee', [BusinessCardController::class, 'confirmation'])->name('business-card.confirmation');
 
 //Delete a card
 Route::get('/supprimer-ma-carte', [BusinessCardController::class, 'deleteRequest'])->name('business-card.delete.request');

@@ -37,7 +37,13 @@ class BusinessCardController extends Controller
 
         $sendConfirmationEmailService->send($businessCard);
 
-        return view('business-card.confirmation')->with('success', 'Votre carte de visite a bien été créée !');
+        return redirect()->route('business-card.confirmation')
+            ->with('success', 'Votre carte de visite a bien été créée !');
+    }
+
+    public function confirmation()
+    {
+        return view('business-card.confirmation');
     }
 
     public function deleteRequest()

@@ -11,7 +11,7 @@
         <section class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
 
             <!-- Flash message -->
-            @if($success)
+            @if(session('success'))
                 <div role="status" class="flex items-center gap-3 border-b border-green-200 bg-green-50 px-6 py-4 text-green-800 sm:px-10">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          class="h-5 w-5 shrink-0"
@@ -25,7 +25,7 @@
                     </svg>
 
                     <p class="text-sm font-medium">
-                        {{ $success }}
+                        {{ session('success') }}
                     </p>
                 </div>
             @endif
