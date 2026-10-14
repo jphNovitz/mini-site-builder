@@ -1,78 +1,78 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Mini Site Builder
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Génère, à partir d'un formulaire, une **carte de visite** numérique pour une entreprise, exportée en site statique déployable sur n'importe quel hébergeur.
 
-## About Laravel
+C'est un *lead magnet* : l'entreprise qui remplit le formulaire (le **lead**) ne crée pas de compte et ne peut pas éditer sa carte elle-même — toute modification passe par un contact direct avec vous. Le but est d'inciter le lead à faire appel à vos services, pas de vendre un palier payant du produit.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Pour le vocabulaire précis du projet (carte de visite, cible du QR code, site statique, lead), voir [`CONTEXT.md`](CONTEXT.md).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Parcours fonctionnel
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. Le lead remplit le formulaire public (`/`) : entreprise ou prénom/nom, coordonnées, réseaux sociaux, logo, couleur d'accent, cible du QR code (vCard ou site web).
+2. Un captcha Altcha (auto-hébergé, sans service tiers) protège le formulaire contre les soumissions automatiques.
+3. La carte est créée en statut **en attente**. Deux emails partent : un à l'admin (nouvelle carte à valider) et un au lead (confirmation de la demande).
+4. Depuis l'espace admin (`/admin`, authentification requise), vous **approuvez** la carte : ça génère les fichiers statiques (`public/c/{slug}/index.html`, `contact.vcf`, QR code, logo) et envoie un email de publication au lead avec un export zip des fichiers.
+5. La carte est accessible publiquement à `votredomaine.com/c/{slug}`.
+6. Le lead peut demander la suppression de sa carte à tout moment (`/supprimer-ma-carte`), via un lien signé envoyé par email.
 
-## Docker
+## Stack technique
 
-Le projet tourne dans Docker (FrankenPHP, MariaDB en local). Les valeurs sensibles viennent du fichier `.env` : copier `.env.example` pour démarrer.
+- **Laravel 13** (PHP 8.3+), déployé avec **FrankenPHP** (Caddy intégré, pas de HTTPS géré par le conteneur).
+- **MariaDB** en local (conteneur Docker), **OVH Web Cloud Databases** (MySQL/MariaDB managé, connexion TLS) en production.
+- **Tailwind CSS** + **Vite** pour les assets.
+- **Altcha** (`grantholle/laravel-altcha`) pour le captcha du formulaire public, sans dépendance à un service externe.
+- **BaconQrCode** pour la génération des QR codes (SVG).
+- **Mailjet** (SMTP) pour l'envoi des emails transactionnels.
 
-**Développement local** (MariaDB dans un conteneur, données dans le volume `mariadb-data`) :
+## Démarrage local
+
+Prérequis : Docker et Docker Compose.
 
 ```bash
+cp .env.example .env
+# compléter .env : DB_ROOT_PASSWORD, DB_USERNAME, DB_PASSWORD, ALTCHA_HMAC_KEY, MAIL_*, ADMIN_EMAIL
 docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
 ```
 
-L'application est disponible sur http://localhost:8090. Le fichier `docker-compose.dev.yml` n'est pas nommé `docker-compose.override.yml` volontairement : ce nom serait chargé automatiquement sur le serveur de production.
+L'application est disponible sur **http://localhost:8090**. Les migrations tournent automatiquement au démarrage (service `migrate`).
 
-**Production** (base OVH Web Cloud Databases, HTTPS géré par Apache en reverse proxy) :
+Pour créer un compte admin de test :
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.dev.yml exec app php artisan db:seed --class=UserSeeder
+```
+
+Identifiants créés : `admin@exempl.es` / `password` — à usage local uniquement, ne jamais lancer ce seeder en production sans changer le mot de passe aussitôt après.
+
+Si vous modifiez le code pendant que la stack tourne, il faut reconstruire l'image pour que le changement soit pris en compte (le `Dockerfile` copie le code au build, pas de montage en direct) :
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+```
+
+## Déploiement production
+
+Le conteneur ne gère pas le HTTPS : un reverse proxy (Apache + Certbot sur le VPS) le fait en amont et transmet les requêtes à `127.0.0.1:8090`.
 
 ```bash
 docker compose up -d --build
 ```
 
-Seuls `migrate`, `app` et `scheduler` sont lancés, et l'application écoute sur `127.0.0.1:8090`. La base de données n'est pas dans cette stack : `DB_HOST`, `DB_PORT`, `DB_*` et `MYSQL_ATTR_SSL_CA` doivent être renseignés dans le `.env` du serveur (voir `.env.example`).
+Seuls `migrate`, `app` et `scheduler` sont lancés — pas de conteneur base de données, celle-ci est hébergée chez OVH. Le `.env` du serveur doit renseigner `DB_HOST`, `DB_PORT`, `DB_*` et `MYSQL_ATTR_SSL_CA` (chemin vers `docker/certs/ovh-ca.pem`, déjà présent dans l'image). Voir `.env.example` pour le détail des deux configurations (dev/prod).
 
-## Learning Laravel
+## Variables d'environnement à connaître
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+En plus des variables Laravel standard, ce projet ajoute :
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Variable | Rôle |
+|---|---|
+| `ADMIN_EMAIL` | Destinataire des notifications « nouvelle carte à valider ». |
+| `MAIL_FROM_ADDRESS` / `MAIL_FROM_NAME` | Expéditeur unique des emails transactionnels (confirmation, publication, suppression). |
+| `ALTCHA_HMAC_KEY` | Clé de signature du captcha Altcha (générer une valeur aléatoire, ne jamais commiter la vraie clé). |
+| `DB_ROOT_PASSWORD` | Mot de passe root du conteneur MariaDB de dev uniquement (`docker-compose.dev.yml`). |
+| `MYSQL_ATTR_SSL_CA` | Chemin du certificat CA pour la connexion TLS à la base en production ; vide en local. |
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Sauvegardes et nettoyage automatique
 
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
-```
-
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Les cartes **en attente** non approuvées depuis 30 jours sont supprimées automatiquement (`BusinessCard::prunable()`, via `model:prune` planifié dans le `scheduler`).
+- Les volumes `cartes` (fichiers publiés) et `logos` ne sont pas encore sauvegardés automatiquement — à mettre en place avant une mise en production durable.
