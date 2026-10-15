@@ -32,7 +32,15 @@ class ZipAction
                 if (!$file->isDir()) {
                     $filePath = $file->getRealPath();
                     $relativePath = substr($filePath, strlen($sourcePath) + 1);
-                    $zip->addFile($filePath, $relativePath);
+
+                    // La balise canonical n'a de sens que sur la version hébergée chez nous :
+                    // la copie exportée dans le zip (destinée à un hébergement par le lead) ne doit pas la contenir.
+                    if ($relativePath === 'index.html') {
+                        $content = preg_replace('#\s*<link rel="canonical"[^>]*>\R?#', '', file_get_contents($filePath));
+                        $zip->addFromString($relativePath, $content);
+                    } else {
+                        $zip->addFile($filePath, $relativePath);
+                    }
                 }
             }
             $zip->close();
