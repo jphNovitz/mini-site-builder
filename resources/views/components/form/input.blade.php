@@ -136,7 +136,7 @@
                     <label for="logo" class="w-full">Logo</label>
                     <input type="file" id="logo" name="logo" placeholder="Votre logo" accept="image/*"
                            class="w-full p-2 border border-gray-200">
-                    <p class="mt-1 text-xs text-slate-500">JPEG, PNG ou WebP — 2 Mo maximum</p>
+                    <p class="mt-1 text-xs text-slate-500">JPEG, PNG ou WebP, 2 Mo maximum</p>
                 </div>
                 @error('logo')
                 <span class="text-red-600 font-semibold"> {{$message}}</span>
@@ -161,7 +161,7 @@
         <h3 class="w-full text-lg font-semibold">Action du QR Code</h3>
         <div class="flex  gap-4 my-2">
             <input type="radio" id="qr_target_vcard" name="qr_target" value="vcard" checked>
-            <label for="qr_target_vcard">Vcard</label><br>
+            <label for="qr_target_vcard">vCard</label><br>
             <input type="radio" id="qr_target_website" name="qr_target" value="website">
             <label for="qr_target_website">Site internet</label><br>
             @error('qr_target')
@@ -180,7 +180,7 @@
             </div>
             <div class="flex justify-start gap-2 my-2">
                 <input type="checkbox" id="marketing_consent" name="marketing_consent">
-                <label for="marketing_consent" class="text-sm">J’accepte de recevoir occasionnellement par e-mail des informations et offres concernant les services de JPHIWEB.</label>
+                <label for="marketing_consent" class="text-sm">J’accepte de recevoir occasionnellement par e-mail des informations et offres concernant les services de jphiweb.</label>
                 @error('marketing_consent')
                 <span class="text-red-600 font-semibold"> {{$message}}</span>
                 @enderror

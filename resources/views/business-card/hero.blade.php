@@ -86,7 +86,7 @@
 
 
             <p class="mt-3 text-sm text-[#C3CEEF]">
-                Vos informations servent uniquement à créer votre carte.
+                Vos informations servent à créer votre carte, et à rien d’autre sans votre accord.
             </p>
         </div>
 

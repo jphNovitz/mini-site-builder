@@ -23,7 +23,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="{{ $accent }}">
-    <title>{{ $fullName !== '' ? $fullName.' — '.$businessCard->company_name : $businessCard->company_name }}</title>
+    <title>{{ $fullName !== '' ? $fullName.', '.$businessCard->company_name : $businessCard->company_name }}</title>
     <link rel="canonical" href="{{ $cardUrl }}">{{-- Retiré du zip export par ZipAction : ne doit pas survivre à un hébergement ailleurs. --}}
     <style>
         @font-face {

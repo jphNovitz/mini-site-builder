@@ -79,7 +79,7 @@
                 </a>
 
                 <p class="mt-5 text-sm text-slate-500">
-                    Jeanphi —
+                    Jeanphi,
                     <a href="https://jphiweb.be"
                        class="font-medium text-green-700 hover:underline">
                         JPHIWEB
