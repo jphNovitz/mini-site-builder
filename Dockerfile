@@ -1,37 +1,129 @@
+## syntax=docker/dockerfile:1
+#
+##FROM composer:2 AS vendor
+#FROM dunglas/frankenphp:1-php8.4-bookworm AS vendor
+#COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
+#WORKDIR /app
+#COPY composer.json composer.lock ./
+#RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist --no-interaction
+#COPY . .
+#RUN composer dump-autoload --optimize --no-dev
+#
+#FROM node:24-alpine AS assets
+#WORKDIR /app
+#COPY package.json package-lock.json ./
+#RUN npm ci
+#COPY vite.config.js ./
+#COPY resources ./resources
+#COPY public ./public
+## resources/css/app.css fait @source sur vendor/ (vues de pagination) : Tailwind a besoin du vendor au build
+#COPY --from=vendor /app/vendor ./vendor
+#RUN npm run build
+#
+#FROM dunglas/frankenphp:1-php8.4-bookworm AS app
+#RUN install-php-extensions zip intl pdo_sqlite pdo_mysql
+#WORKDIR /app
+#COPY . .
+#COPY --from=vendor /app/vendor ./vendor
+#COPY --from=assets /app/public/build ./public/build
+#COPY docker/Caddyfile /etc/frankenphp/Caddyfile
+#RUN php artisan package:discover --ansi \
+# && php artisan storage:link
+#RUN mkdir -p storage/framework/sessions storage/framework/views storage/framework/cache storage/logs bootstrap/cache public/c \
+# && chown -R www-data:www-data storage bootstrap/cache database public/c
+#RUN setcap -r /usr/local/bin/frankenphp \
+# && chown -R www-data:www-data /data/caddy /config/caddy
+#ENV APP_ENV=production \
+#    APP_DEBUG=false
+#USER www-data
+#EXPOSE 8080
+
 # syntax=docker/dockerfile:1
 
-FROM composer:2 AS vendor
-WORKDIR /app
-COPY composer.json composer.lock ./
-RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist --no-interaction
-COPY . .
-RUN composer dump-autoload --optimize --no-dev
+# --------------------------------------------------
+# 1. Dépendances PHP / Composer
+# --------------------------------------------------
+FROM dunglas/frankenphp:1-php8.4-bookworm AS vendor
 
-FROM node:24-alpine AS assets
+RUN install-php-extensions zip intl pdo_sqlite pdo_mysql
+
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
+
 WORKDIR /app
+
+COPY composer.json composer.lock ./
+
+RUN composer install \
+    --no-dev \
+    --no-scripts \
+    --no-autoloader \
+    --prefer-dist \
+    --no-interaction
+
+COPY . .
+
+RUN composer dump-autoload --optimize --no-dev --no-scripts
+
+
+# --------------------------------------------------
+# 2. Compilation des assets
+# --------------------------------------------------
+FROM node:24-alpine AS assets
+
+WORKDIR /app
+
 COPY package.json package-lock.json ./
+
 RUN npm ci
+
 COPY vite.config.js ./
 COPY resources ./resources
 COPY public ./public
-# resources/css/app.css fait @source sur vendor/ (vues de pagination) : Tailwind a besoin du vendor au build
+
+# Tailwind a besoin des vues de pagination dans vendor/
 COPY --from=vendor /app/vendor ./vendor
+
 RUN npm run build
 
+
+# --------------------------------------------------
+# 3. Application Laravel / FrankenPHP
+# --------------------------------------------------
 FROM dunglas/frankenphp:1-php8.4-bookworm AS app
+
 RUN install-php-extensions zip intl pdo_sqlite pdo_mysql
+
 WORKDIR /app
+
 COPY . .
+
 COPY --from=vendor /app/vendor ./vendor
 COPY --from=assets /app/public/build ./public/build
+
 COPY docker/Caddyfile /etc/frankenphp/Caddyfile
+
+# Initialisation de Laravel
 RUN php artisan package:discover --ansi \
- && php artisan storage:link
-RUN mkdir -p storage/framework/sessions storage/framework/views storage/framework/cache storage/logs bootstrap/cache public/c \
- && chown -R www-data:www-data storage bootstrap/cache database public/c
+    && php artisan storage:link
+
+# Répertoires et permissions
+RUN mkdir -p \
+    storage/framework/sessions \
+    storage/framework/views \
+    storage/framework/cache \
+    storage/logs \
+    bootstrap/cache \
+    public/c \
+    && chown -R www-data:www-data \
+        storage bootstrap/cache database public/c
+
+# Exécution sans privilèges root
 RUN setcap -r /usr/local/bin/frankenphp \
- && chown -R www-data:www-data /data/caddy /config/caddy
+    && chown -R www-data:www-data /data/caddy /config/caddy
+
 ENV APP_ENV=production \
     APP_DEBUG=false
+
 USER www-data
+
 EXPOSE 8080

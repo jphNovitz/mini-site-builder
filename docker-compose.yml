@@ -1,37 +1,97 @@
+#services:
+#  migrate:
+#    build: .
+#    command: php artisan migrate --force
+#    env_file: .env
+#    restart: "no"
+#
+#  app:
+#    build: .
+#    restart: unless-stopped
+#    ports:
+#      - "127.0.0.1:8090:8080"
+#    env_file: .env
+#    volumes:
+#      - cartes:/app/public/c
+#      - logos:/app/storage/app/public
+#    depends_on:
+#      migrate:
+#        condition: service_completed_successfully
+#
+#  scheduler:
+#    build: .
+#    restart: unless-stopped
+#    command: sh -c "while true; do php artisan schedule:run; sleep 60; done"
+#    env_file: .env
+#    healthcheck:
+#        test: [ "NONE" ]
+#    volumes:
+#      - cartes:/app/public/c
+#      - logos:/app/storage/app/public
+#    depends_on:
+#      migrate:
+#        condition: service_completed_successfully
+#
+#volumes:
+#  cartes:
+#  logos:
+
 services:
-  migrate:
-    build: .
-    command: php artisan migrate --force
-    env_file: .env
-    restart: "no"
+    mysql:
+        image: mariadb:10.11
+        restart: unless-stopped
+        environment:
+            MARIADB_DATABASE: ${DB_DATABASE}
+            MARIADB_USER: ${DB_USERNAME}
+            MARIADB_PASSWORD: ${DB_PASSWORD}
+            MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?DB_ROOT_PASSWORD requis}
+        volumes:
+            - mysql_data:/var/lib/mysql
+        healthcheck:
+            test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+            interval: 5s
+            timeout: 5s
+            retries: 10
+            start_period: 30s
 
-  app:
-    build: .
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:8090:8080"
-    env_file: .env
-    volumes:
-      - cartes:/app/public/c
-      - logos:/app/storage/app/public
-    depends_on:
-      migrate:
-        condition: service_completed_successfully
+    migrate:
+        build: .
+        command: php artisan migrate --force
+        env_file: .env
+        restart: "no"
+        depends_on:
+            mysql:
+                condition: service_healthy
 
-  scheduler:
-    build: .
-    restart: unless-stopped
-    command: sh -c "while true; do php artisan schedule:run; sleep 60; done"
-    env_file: .env
-    healthcheck:
-        test: [ "NONE" ]
-    volumes:
-      - cartes:/app/public/c
-      - logos:/app/storage/app/public
-    depends_on:
-      migrate:
-        condition: service_completed_successfully
+    app:
+        build: .
+        restart: unless-stopped
+        ports:
+            - "127.0.0.1:8090:8080"
+        env_file: .env
+        volumes:
+            - cartes:/app/public/c
+            - logos:/app/storage/app/public
+        depends_on:
+            migrate:
+                condition: service_completed_successfully
+
+    scheduler:
+        build: .
+        restart: unless-stopped
+        command: sh -c "while true; do php artisan schedule:run; sleep 60; done"
+        env_file: .env
+        healthcheck:
+            test: ["NONE"]
+        volumes:
+            - cartes:/app/public/c
+            - logos:/app/storage/app/public
+        depends_on:
+            migrate:
+                condition: service_completed_successfully
 
 volumes:
-  cartes:
-  logos:
+    mysql_data:
+    cartes:
+    logos:
+
